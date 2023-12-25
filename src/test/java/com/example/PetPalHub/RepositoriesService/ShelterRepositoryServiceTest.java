@@ -1,13 +1,18 @@
 package com.example.PetPalHub.RepositoriesService;
 
+import com.example.PetPalHub.Entities.Enums.*;
 import com.example.PetPalHub.Entities.Location;
+import com.example.PetPalHub.Entities.Pet;
 import com.example.PetPalHub.Entities.Shelter;
 import com.example.PetPalHub.Exceptions.ShelterAlreadyCreatedException;
 import com.example.PetPalHub.Exceptions.ShelterNotFoundException;
+import com.example.PetPalHub.Repositories.PetRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 

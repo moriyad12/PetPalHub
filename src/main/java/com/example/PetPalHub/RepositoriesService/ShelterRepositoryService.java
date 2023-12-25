@@ -39,10 +39,5 @@ public class ShelterRepositoryService {
         return shelterRepository.findAll();
     }
 
-    public List<Pet> getAllPetsByShelterId(int id) {
-        if (!shelterRepository.existsById(id))
-            throw new ShelterNotFoundException(id);
-        return shelterRepository.findPetsByShelterId(id);
-    }
 
 }
