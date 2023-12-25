@@ -8,9 +8,11 @@ import com.example.PetPalHub.RepositoriesService.Dashboard.DashboardRepositorySe
 import com.example.PetPalHub.RepositoriesService.Relation.ApplicationRepositoryService;
 import com.example.PetPalHub.RepositoriesService.Shelter.PetRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AdopterService {
 
     @Autowired
