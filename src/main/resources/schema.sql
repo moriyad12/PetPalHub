@@ -1,3 +1,4 @@
+use petpal;
 -- Drop tables if they exist
 DROP TABLE IF EXISTS Pet;
 DROP TABLE IF EXISTS Shelter;
@@ -15,7 +16,7 @@ CREATE TABLE Location (
 CREATE TABLE Shelter (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    phoneNumber int,
+	phone_number int,
     location_id INT,
     FOREIGN KEY (location_id) REFERENCES Location(id),
     UNIQUE KEY unique_location_id (location_id)
