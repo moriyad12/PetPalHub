@@ -7,6 +7,7 @@ import com.example.PetPalHub.Exceptions.Shelter.ShelterNotFoundException;
 import com.example.PetPalHub.Repositories.Shelter.PetRepository;
 import com.example.PetPalHub.Repositories.Shelter.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,4 +42,8 @@ public class PetRepositoryService {
             throw new ShelterNotFoundException(id);
         return petRepository.findByShelterId(id);
     }
+    public List<Pet> getAllPets(Specification<Pet> specification){
+        return petRepository.findAll(specification);
+    }
+
 }
