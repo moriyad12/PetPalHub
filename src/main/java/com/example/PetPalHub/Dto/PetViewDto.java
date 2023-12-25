@@ -9,7 +9,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode
 public class PetViewDto {
 
     private int id;
