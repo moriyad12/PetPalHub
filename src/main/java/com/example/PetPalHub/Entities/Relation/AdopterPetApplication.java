@@ -39,14 +39,5 @@ public class AdopterPetApplication {
     private Date applicationDate;
 
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        AdopterPetApplication that = (AdopterPetApplication) o;
-//
-//        return adopter.equals(that.adopter) && pet.equals(that.pet) && status == that.status;
-//    }
 
 }

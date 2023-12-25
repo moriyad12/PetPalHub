@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Objects;
 
 
-@EqualsAndHashCode
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,7 +39,7 @@ public class Pet {
     private String imagePath;
     @Column(nullable = false)
     private VaccineStatus vaccineStatus;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(
             name = "shelter_id",
             referencedColumnName = "id"
