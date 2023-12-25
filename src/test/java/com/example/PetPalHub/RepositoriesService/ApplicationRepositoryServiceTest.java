@@ -59,6 +59,31 @@ public class ApplicationRepositoryServiceTest {
         });
     }
 
+    @Test
+    public void updateApplicationStatusTest() {
+        AdopterPetApplication a = this.Create();
+        applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
+        applicationRepositoryService.updateApplicationStatus(a.getAdopter().getId(), a.getPet().getId(), Status.ACCEPTED);
+        AdopterPetApplication b = applicationRepositoryService.getApplicationsByAdopterIdAndPetId(a.getAdopter().getId(), a.getPet().getId());
+        Assertions.assertEquals(Status.ACCEPTED, b.getStatus());
+    }
+
+    @Test
+    public void getByPet_Shelter_IdAndStatusTest() {
+        AdopterPetApplication a = this.Create();
+        applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
+        List<AdopterPetApplication> list = applicationRepositoryService.getByPet_Shelter_IdAndStatus(a.getPet().getShelter().getId(), a.getStatus());
+        boolean found = true;
+        for (AdopterPetApplication application : list) {
+            if (application.getPet().getShelter().getId() != a.getPet().getShelter().getId()
+                    || application.getStatus() != a.getStatus()) {
+                found = false;
+                break;
+            }
+        }
+        Assertions.assertTrue(found);
+    }
+
 
     @Test
     public void getApplicationsByAdopterIdAndPetIdNotFoundTest() {////  if adopter here will return not found application

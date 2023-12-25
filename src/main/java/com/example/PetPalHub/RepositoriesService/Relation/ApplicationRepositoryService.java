@@ -3,11 +3,13 @@ package com.example.PetPalHub.RepositoriesService.Relation;
 import com.example.PetPalHub.Entities.Enums.Status;
 import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
+import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.Adopter;
 import com.example.PetPalHub.Exceptions.RelationException.ApplicationNotFoundExceptions;
 import com.example.PetPalHub.Exceptions.RelationException.ApplicationsAlreadyFoundExceptions;
 import com.example.PetPalHub.Repositories.Relation.ApplicationRepository;
 import com.example.PetPalHub.RepositoriesService.Shelter.PetRepositoryService;
+import com.example.PetPalHub.RepositoriesService.Shelter.ShelterRepositoryService;
 import com.example.PetPalHub.RepositoriesService.users.AdopterRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +30,11 @@ public class ApplicationRepositoryService {
     @Autowired
     private ApplicationRepository applicationRepository;
 
+    @Autowired
+    private ShelterRepositoryService shelterRepositoryService;
 
-    public void addApplication(int adopterId, int petId) {  //// handle duplicated
+
+    public void addApplication(int adopterId, int petId) {
         Pet pet = petRepositoryService.getPetById(petId);
         Adopter adopter = adopterRepositoryService.findById(adopterId);
         Optional<AdopterPetApplication> a = Optional.ofNullable(applicationRepository.findByAdopterAndPet(adopter, pet));
@@ -39,6 +44,12 @@ public class ApplicationRepositoryService {
         applicationRepository.save(adopterPetApplication);
     }
 
+    public void updateApplicationStatus(int adopterId, int petId,Status status) {
+        AdopterPetApplication application = this.getApplicationsByAdopterIdAndPetId(adopterId, petId);
+        application.setStatus(status);
+        applicationRepository.save(application);
+    }
+
     public AdopterPetApplication getApplicationsByAdopterIdAndPetId(int adopterId, int petId) {
         Pet pet = petRepositoryService.getPetById(petId);
         Adopter adopter = adopterRepositoryService.findById(adopterId);
@@ -46,6 +57,11 @@ public class ApplicationRepositoryService {
         if (adopterPetApplication.isEmpty())
             throw new ApplicationNotFoundExceptions();
         return adopterPetApplication.get();
+    }
+
+    public List<AdopterPetApplication> getByPet_Shelter_IdAndStatus(int shelterId,Status status) {
+        Shelter shelter = shelterRepositoryService.getShelterById(shelterId);
+        return applicationRepository.findByPet_ShelterAndStatus(shelter, status);
     }
 
     public List<AdopterPetApplication> getApplicationsByAdopterId(int adopterId) {

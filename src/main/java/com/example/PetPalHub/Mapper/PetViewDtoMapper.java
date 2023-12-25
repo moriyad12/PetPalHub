@@ -14,8 +14,7 @@ public class PetViewDtoMapper {
     private ShelterRepositoryService shelterRepositoryService;
     @Autowired
     private PetRepositoryService petRepositoryService;
-
-    public PetViewDto getDtoToView(Pet pet) {
+    public PetViewDto getDtoToView(Pet pet){
         return PetViewDto.builder()
                 .id(pet.getId())
                 .name(pet.getName())
@@ -33,8 +32,7 @@ public class PetViewDtoMapper {
                 .shelterName(pet.getShelter().getName())
                 .build();
     }
-
-    public Pet getPetWhenCreate(PetViewDto petViewDto) {
+    public Pet getPetWhenCreate(PetViewDto petViewDto){
         return Pet.builder()
                 .name(petViewDto.getName())
                 .species(petViewDto.getSpecies())
@@ -50,9 +48,8 @@ public class PetViewDtoMapper {
                 .shelter(shelterRepositoryService.getShelterById(petViewDto.getShelterId()))
                 .build();
     }
-
-    public Pet getPetWhenUpdate(PetViewDto petViewDto) {
-        Pet pet = petRepositoryService.getPetById(petViewDto.getId());
+    public Pet getPetWhenUpdate(PetViewDto petViewDto){
+        Pet pet =petRepositoryService.getPetById(petViewDto.getId());
         pet.setName(petViewDto.getName());
         pet.setSpecies(petViewDto.getSpecies());
         pet.setBreed(petViewDto.getBreed());
