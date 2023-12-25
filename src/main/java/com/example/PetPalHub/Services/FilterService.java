@@ -1,6 +1,7 @@
 package com.example.PetPalHub.Services;
 
 
+import com.example.PetPalHub.Entities.Enums.Availability;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Filters.Enums.FilterTypes;
 import com.example.PetPalHub.Filters.FilterCriteria;
@@ -9,7 +10,6 @@ import com.example.PetPalHub.Filters.FilterRelationList;
 import com.example.PetPalHub.RepositoriesService.Shelter.PetRepositoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class FilterService {
                 criteriaBuilder.greaterThan(root.get("id"), -1);
     }
 
-    public Specification<Pet> getSpecifications(List<FilterRelationList<FilterTypes, Object>> filters) {
+    private Specification<Pet> getSpecifications(List<FilterRelationList<FilterTypes, Object>> filters) {
         Specification<Pet> specification = getSpecificationForAll();
         for (FilterRelationList<FilterTypes, Object> filter : filters) {
             FilterCriteria filterCriteria = filterFactory.getFilterCriteria(filter);
@@ -39,7 +39,12 @@ public class FilterService {
         return petReposit.getAllPets(getSpecifications(filters));
     }
 
-//    public List<Pet> getFilteredEventHeadersList(int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
+    public List<Pet> getFilteredAvailablePets(List<FilterRelationList<FilterTypes, Object>> filters) {
+        filters.add(new FilterRelationList<>(FilterTypes.Availability, Availability.AVAILABLE));
+        return petReposit.getAllPets(getSpecifications(filters));
+    }
+
+//    public List<PetDto> getFilteredEventHeadersList(int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
 //        return this.dashboardRepositoryService.getFilteredPage(pageIndex, pageSize, getSpecifications(filters));
 //    }
 
