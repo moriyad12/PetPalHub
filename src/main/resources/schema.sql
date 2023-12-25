@@ -6,7 +6,9 @@ DROP TABLE IF EXISTS Location;
 DROP TABLE IF EXISTS Adopter;
 DROP TABLE IF EXISTS Staff;
 DROP TABLE IF EXISTS Manager;
-DROP TABLE IF EXISTS "user";
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Application;
+DROP TABLE IF EXISTS Record;
 
 -- Location Table
 CREATE TABLE Location (
@@ -43,7 +45,7 @@ CREATE TABLE Pet (
     FOREIGN KEY (shelter_id) REFERENCES Shelter(id)
 );
 -- Create User table
-CREATE TABLE "user" (
+CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     phone_number VARCHAR(20),
     role INT NOT NULL,
@@ -57,17 +59,27 @@ CREATE TABLE "user" (
 -- Create Adopter table
 CREATE TABLE Adopter (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES "user" (id)
+    FOREIGN KEY (id) REFERENCES Users (id)
 );
 
 -- Create Staff table
 CREATE TABLE Staff (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES "user" (id)
+    FOREIGN KEY (id) REFERENCES Users (id)
 );
 
 -- Create Manager table
 CREATE TABLE Manager (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES "user" (id)
+    FOREIGN KEY (id) REFERENCES Users (id)
 );
+
+CREATE TABLE Application (
+    pet_id INT,
+    adopter_id INT,
+    status INT NOT NULL,
+    PRIMARY KEY (pet_id, adopter_id),
+    FOREIGN KEY (pet_id) REFERENCES Pet(id),
+    FOREIGN KEY (adopter_id) REFERENCES Adopter(id)
+);
+

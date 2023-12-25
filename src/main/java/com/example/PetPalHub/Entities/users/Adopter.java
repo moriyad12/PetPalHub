@@ -1,15 +1,21 @@
 package com.example.PetPalHub.Entities.users;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
+import jakarta.persistence.*;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
+
+import java.util.List;
+
 
 @Entity
 @SuperBuilder
 @Data
 @NoArgsConstructor
 @Table(name = "Adopter")
+@EqualsAndHashCode
 public class Adopter extends User {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "adopter", fetch = FetchType.EAGER)
+    private List<AdopterPetApplication> adopterPetApplicationList;
 }
