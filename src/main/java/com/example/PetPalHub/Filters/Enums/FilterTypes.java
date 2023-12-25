@@ -7,6 +7,7 @@ public enum FilterTypes {
     HealthStatus,
     Name,
     VaccineStatus,
-    Spieces
+    Species,
+    Behaviour,
 
 }

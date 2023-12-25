@@ -1,9 +1,6 @@
 package com.example.PetPalHub.Filters;
 
-import com.example.PetPalHub.Entities.Enums.Availability;
-import com.example.PetPalHub.Entities.Enums.Gender;
-import com.example.PetPalHub.Entities.Enums.HealthStatus;
-import com.example.PetPalHub.Entities.Enums.VaccineStatus;
+import com.example.PetPalHub.Entities.Enums.*;
 import com.example.PetPalHub.Filters.Enums.FilterTypes;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +17,8 @@ public class FilterFactory {
             case Availability -> new AvailabilityFilterCriteria((Availability) filter.second);
             case DateOfBirth -> new DateOfBirthFilterCriteria((Date) filter.second);
             case VaccineStatus -> new VaccineStatusFilterCriteria((VaccineStatus) filter.second);
-            case Spieces -> new SpiecesFilterCriteria((String) filter.second);
+            case Species -> new SpiecesFilterCriteria((String) filter.second);
+            case Behaviour -> new BehaviourFilterCriteria((Behaviour) filter.second);
         };
     }
 }

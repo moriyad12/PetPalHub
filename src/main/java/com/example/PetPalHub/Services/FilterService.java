@@ -2,6 +2,7 @@ package com.example.PetPalHub.Services;
 
 
 import com.example.PetPalHub.Dto.PetHeaderDto;
+import com.example.PetPalHub.Entities.Enums.Availability;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Filters.Enums.FilterTypes;
 import com.example.PetPalHub.Filters.FilterCriteria;
@@ -30,7 +31,7 @@ public class FilterService {
                 criteriaBuilder.greaterThan(root.get("id"), -1);
     }
 
-    public Specification<Pet> getSpecifications(List<FilterRelationList<FilterTypes, Object>> filters) {
+    private Specification<Pet> getSpecifications(List<FilterRelationList<FilterTypes, Object>> filters) {
         Specification<Pet> specification = getSpecificationForAll();
         for (FilterRelationList<FilterTypes, Object> filter : filters) {
             FilterCriteria filterCriteria = filterFactory.getFilterCriteria(filter);
@@ -46,4 +47,5 @@ public class FilterService {
     public List<PetHeaderDto> getFilteredEventHeadersList(int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
         return this.dashboardRepositoryService.getFilteredPage(pageIndex, pageSize, getSpecifications(filters));
     }
+
 }
