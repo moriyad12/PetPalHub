@@ -3,24 +3,24 @@ package com.example.PetPalHub.Creators;
 import com.example.PetPalHub.Entities.Enums.Gender;
 import com.example.PetPalHub.Entities.Enums.Role;
 import com.example.PetPalHub.Entities.users.Adopter;
+import com.example.PetPalHub.Entities.users.Manager;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
 @Component
-public class AdopterCustomCreator {
+public class ManagerCustomCreator {
     static int value = 0;
 
-    public Adopter createAdopter() {
-        return Adopter.builder()
-                .firstName("Adopter")
+    public Manager createManager() {
+        return Manager.builder()
+                .firstName("manager")
                 .lastName("Test")
-                .email("adopter" + value++ + "@test.com")
+                .email("manager" + value++ + "@test.com")
                 .phoneNumber("1234567890")
                 .gender(Gender.MALE)
                 .role(Role.ADOPTER)
                 .password("password")
-                .adopterPetApplicationList(new ArrayList<>())
                 .build();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.PetPalHub.RepositoriesService.users;
 
 import com.example.PetPalHub.Entities.users.Staff;
+import com.example.PetPalHub.Exceptions.UsersExceptions.AlreadyFoundException;
 import com.example.PetPalHub.Exceptions.UsersExceptions.StaffNotFoundException;
 import com.example.PetPalHub.Repositories.users.StaffRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,8 @@ public class StaffRepositoryService {
     private final StaffRepository staffRepository;
 
     public void add(Staff staff) {
+        if(staffRepository.findByEmail(staff.getEmail()).isPresent()||staffRepository.existsById(staff.getId()))
+            throw new AlreadyFoundException();
         staffRepository.save(staff);
     }
 
@@ -33,11 +36,9 @@ public class StaffRepositoryService {
     }
 
     public void delete(Staff staff) {
-        try {
-            staffRepository.delete(staff);
-        } catch (Exception e) {
+        if (!staffRepository.existsById(staff.getId()))
             throw new StaffNotFoundException();
-        }
+        staffRepository.delete(staff);
     }
 
     public Staff findById(int id) {
