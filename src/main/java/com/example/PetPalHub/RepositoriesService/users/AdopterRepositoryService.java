@@ -21,7 +21,6 @@ public class AdopterRepositoryService {
             throw new AlreadyFoundException();
         adopterRepository.save(adopter);
     }
-
     public void deleteById(int id) {
         Optional<Adopter> adopter = adopterRepository.findById(id);
         if (adopter.isEmpty())
