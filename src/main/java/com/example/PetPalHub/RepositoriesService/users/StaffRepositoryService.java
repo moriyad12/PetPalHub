@@ -1,8 +1,8 @@
-package com.example.PetPalHub.RepositoryService.users;
+package com.example.PetPalHub.RepositoriesService.users;
 
-import com.example.PetPalHub.Entity.users.Staff;
+import com.example.PetPalHub.Entities.users.Staff;
 import com.example.PetPalHub.Exceptions.UsersExceptions.StaffNotFoundException;
-import com.example.PetPalHub.Repository.users.StaffRepository;
+import com.example.PetPalHub.Repositories.users.StaffRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

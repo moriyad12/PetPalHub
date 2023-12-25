@@ -1,4 +1,4 @@
-package com.example.PetPalHub.Entities;
+package com.example.PetPalHub.Entities.Shelter;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

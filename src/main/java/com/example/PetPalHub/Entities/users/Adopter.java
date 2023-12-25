@@ -1,8 +1,7 @@
-package com.example.PetPalHub.Entity.users;
+package com.example.PetPalHub.Entities.users;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -11,7 +10,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Data
 @NoArgsConstructor
-@Table(name = "staff")
-public class Staff extends User {
-
+@Table(name = "Adopter")
+public class Adopter extends User {
 }

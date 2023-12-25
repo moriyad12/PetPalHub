@@ -1,8 +1,8 @@
 package com.example.PetPalHub.Creators;
 
-import com.example.PetPalHub.Entity.enums.Gender;
-import com.example.PetPalHub.Entity.enums.Role;
-import com.example.PetPalHub.Entity.users.Adopter;
+import com.example.PetPalHub.Entities.Enums.Gender;
+import com.example.PetPalHub.Entities.Enums.Role;
+import com.example.PetPalHub.Entities.users.Adopter;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package com.example.PetPalHub.Entities;
+package com.example.PetPalHub.Entities.Shelter;
 
 import com.example.PetPalHub.Entities.Enums.*;
 import jakarta.persistence.*;

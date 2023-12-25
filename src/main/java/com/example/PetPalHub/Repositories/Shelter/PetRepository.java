@@ -1,6 +1,6 @@
-package com.example.PetPalHub.Repositories;
+package com.example.PetPalHub.Repositories.Shelter;
 
-import com.example.PetPalHub.Entities.Pet;
+import com.example.PetPalHub.Entities.Shelter.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
