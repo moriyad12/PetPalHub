@@ -3,6 +3,7 @@ package com.example.PetPalHub.Repositories.Relation;
 import com.example.PetPalHub.Entities.Enums.Status;
 import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
+import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.Adopter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -23,5 +24,6 @@ public interface ApplicationRepository extends JpaRepository<AdopterPetApplicati
 
     List<AdopterPetApplication> findByPetAndStatus(Pet pet, Status status);
 
+    List<AdopterPetApplication> findByPet_ShelterAndStatus(Shelter shelter, Status status);
 
 }

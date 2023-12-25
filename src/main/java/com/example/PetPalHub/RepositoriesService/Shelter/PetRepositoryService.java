@@ -2,6 +2,7 @@ package com.example.PetPalHub.RepositoriesService.Shelter;
 
 import com.example.PetPalHub.Dto.PetHeaderDto;
 import com.example.PetPalHub.Entities.Shelter.Pet;
+import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Exceptions.Shelter.PetAlreadyAddedException;
 import com.example.PetPalHub.Exceptions.Shelter.PetNotFoundException;
 import com.example.PetPalHub.Exceptions.Shelter.ShelterNotFoundException;
@@ -63,4 +64,12 @@ public class PetRepositoryService {
         return petHeaderDtos;
     }
 
+    public List<PetHeaderDto> getFilteredPetsByShelterHeaderDto(Shelter shelter, PageRequest pageRequest, Specification<Pet> specification) {
+        List<Pet> pets = petRepository.find(shelter, specification, pageRequest).getContent();
+        List<PetHeaderDto> petHeaderDtos = new ArrayList<>();
+        for (Pet pet : pets) {
+            petHeaderDtos.add(new PetHeaderDto(pet));
+        }
+        return petHeaderDtos;
+    }
 }
