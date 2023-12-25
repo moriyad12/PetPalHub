@@ -10,4 +10,6 @@ public enum FilterTypes {
     Species,
     Behaviour,
 
+    ShelterId
+
 }

@@ -5,6 +5,7 @@ import com.example.PetPalHub.Entities.Enums.Availability;
 import com.example.PetPalHub.Entities.Enums.Status;
 import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
+import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Mapper.PetViewDtoMapper;
 import com.example.PetPalHub.RepositoriesService.Dashboard.DashboardRepositoryService;
 import com.example.PetPalHub.RepositoriesService.Relation.ApplicationRepositoryService;
