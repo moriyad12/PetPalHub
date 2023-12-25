@@ -6,10 +6,12 @@ import com.example.PetPalHub.Exceptions.ShelterAlreadyCreatedException;
 import com.example.PetPalHub.Exceptions.ShelterNotFoundException;
 import com.example.PetPalHub.Repositories.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ShelterRepositoryService {
     @Autowired
     private ShelterRepository shelterRepository;
@@ -40,7 +42,7 @@ public class ShelterRepositoryService {
     public List<Pet> getAllPetsByShelterId(int id) {
         if (!shelterRepository.existsById(id))
             throw new ShelterNotFoundException(id);
-        return shelterRepository.findAllPetsByShelterId(id);
+        return shelterRepository.findPetsByShelterId(id);
     }
 
 }

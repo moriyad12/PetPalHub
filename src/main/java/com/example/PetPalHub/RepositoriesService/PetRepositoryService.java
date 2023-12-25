@@ -6,9 +6,11 @@ import com.example.PetPalHub.Exceptions.PetNotFoundException;
 import com.example.PetPalHub.Exceptions.ShelterNotFoundException;
 import com.example.PetPalHub.Repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class PetRepositoryService {
 
     @Autowired
