@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode
 public class PetHeaderDto {
 
     private int id;
