@@ -1,11 +1,11 @@
-package com.example.PetPalHub.RepositoriesService;
+package com.example.PetPalHub.RepositoriesService.Shelter;
 
-import com.example.PetPalHub.Entities.Pet;
-import com.example.PetPalHub.Exceptions.PetAlreadyAddedException;
-import com.example.PetPalHub.Exceptions.PetNotFoundException;
-import com.example.PetPalHub.Exceptions.ShelterNotFoundException;
-import com.example.PetPalHub.Repositories.PetRepository;
-import com.example.PetPalHub.Repositories.ShelterRepository;
+import com.example.PetPalHub.Entities.Shelter.Pet;
+import com.example.PetPalHub.Exceptions.Shelter.PetAlreadyAddedException;
+import com.example.PetPalHub.Exceptions.Shelter.PetNotFoundException;
+import com.example.PetPalHub.Exceptions.Shelter.ShelterNotFoundException;
+import com.example.PetPalHub.Repositories.Shelter.PetRepository;
+import com.example.PetPalHub.Repositories.Shelter.ShelterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

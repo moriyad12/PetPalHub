@@ -1,6 +1,6 @@
-package com.example.PetPalHub.Repository.users;
+package com.example.PetPalHub.Repositories.users;
 
-import com.example.PetPalHub.Entity.users.User;
+import com.example.PetPalHub.Entities.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

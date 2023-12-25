@@ -1,4 +1,4 @@
-package com.example.PetPalHub.Entity.enums;
+package com.example.PetPalHub.Entities.Enums;
 
 public enum Role {
     MANAGER("ROLE_MANAGER"),

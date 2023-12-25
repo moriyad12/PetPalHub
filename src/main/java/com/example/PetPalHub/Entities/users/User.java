@@ -1,9 +1,9 @@
-package com.example.PetPalHub.Entity.users;
+package com.example.PetPalHub.Entities.users;
 
-import com.example.PetPalHub.Entity.enums.Gender;
-import com.example.PetPalHub.Entity.enums.Role;
+
+import com.example.PetPalHub.Entities.Enums.Gender;
+import com.example.PetPalHub.Entities.Enums.Role;
 import jakarta.persistence.*;
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user")
+@Table(name = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

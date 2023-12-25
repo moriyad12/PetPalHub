@@ -1,8 +1,8 @@
-package com.example.PetPalHub.RepositoryService.users;
+package com.example.PetPalHub.RepositoriesService.users;
 
-import com.example.PetPalHub.Entity.users.Adopter;
+import com.example.PetPalHub.Entities.users.Adopter;
 import com.example.PetPalHub.Exceptions.UsersExceptions.AdopterNotFoundException;
-import com.example.PetPalHub.Repository.users.AdopterRepository;
+import com.example.PetPalHub.Repositories.users.AdopterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

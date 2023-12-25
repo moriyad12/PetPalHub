@@ -1,9 +1,12 @@
 
-use petpal;
 -- Drop tables if they exist
 DROP TABLE IF EXISTS Pet;
 DROP TABLE IF EXISTS Shelter;
 DROP TABLE IF EXISTS Location;
+DROP TABLE IF EXISTS Adopter;
+DROP TABLE IF EXISTS Staff;
+DROP TABLE IF EXISTS Manager;
+DROP TABLE IF EXISTS "user";
 
 -- Location Table
 CREATE TABLE Location (
@@ -19,8 +22,7 @@ CREATE TABLE Shelter (
     name VARCHAR(255) NOT NULL,
 	phone_number int,
     location_id INT,
-    FOREIGN KEY (location_id) REFERENCES Location(id),
-    UNIQUE KEY unique_location_id (location_id)
+    FOREIGN KEY (location_id) REFERENCES Location(id)
 );
 
 -- Pet Table
@@ -40,36 +42,32 @@ CREATE TABLE Pet (
     shelter_id INT,
     FOREIGN KEY (shelter_id) REFERENCES Shelter(id)
 );
-create table user
-(
-    id           int         not null auto_increment,
-    phone_number varchar(20),
-    role         int         not null,
-    email        varchar(50) not null unique,
-    password     varchar(50) not null,
-    first_name   varchar(50) not null,
-    last_name    varchar(50) not null,
-    gender       int         not null,
-    primary key (id)
+-- Create User table
+CREATE TABLE "user" (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    phone_number VARCHAR(20),
+    role INT NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender INT NOT NULL
 );
 
-create table adopter
-(
-    id int not null,
-    primary key (id),
-    foreign key (id) references user (id)
+-- Create Adopter table
+CREATE TABLE Adopter (
+    id INT PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES "user" (id)
 );
 
-create table staff
-(
-    id int not null,
-    primary key (id),
-    foreign key (id) references user (id)
+-- Create Staff table
+CREATE TABLE Staff (
+    id INT PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES "user" (id)
 );
 
-create table manager
-(
-    id int not null,
-    primary key (id),
-    foreign key (id) references user (id)
+-- Create Manager table
+CREATE TABLE Manager (
+    id INT PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES "user" (id)
 );
