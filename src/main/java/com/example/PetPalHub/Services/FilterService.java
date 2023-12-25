@@ -2,6 +2,7 @@ package com.example.PetPalHub.Services;
 
 
 import com.example.PetPalHub.Dto.PetHeaderDto;
+import com.example.PetPalHub.Entities.Enums.Availability;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Filters.Enums.FilterTypes;
 import com.example.PetPalHub.Filters.FilterCriteria;
@@ -48,11 +49,11 @@ public class FilterService {
 
     public List<PetHeaderDto> getFilteredPetsHeadersListByShelterId(int shelterId, int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
         filters.add(new FilterRelationList<>(FilterTypes.ShelterId, shelterId));
-        return this.dashboardRepositoryService.getFilteredPage(pageIndex, pageSize, getSpecifications(filters));
+        return this.dashboardRepositoryService.getFilteredPetsPage(pageIndex, pageSize, getSpecifications(filters));
     }
 
     public List<PetHeaderDto> getFilteredAvailablePetsHeadersList(int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
         filters.add(new FilterRelationList<>(FilterTypes.Availability, Availability.AVAILABLE));
-        return this.dashboardRepositoryService.getFilteredPage(pageIndex, pageSize, getSpecifications(filters));
+        return this.dashboardRepositoryService.getFilteredPetsPage(pageIndex, pageSize, getSpecifications(filters));
     }
 }
