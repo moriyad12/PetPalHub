@@ -19,6 +19,7 @@ public class FilterFactory {
             case VaccineStatus -> new VaccineStatusFilterCriteria((VaccineStatus) filter.second);
             case Species -> new SpiecesFilterCriteria((String) filter.second);
             case Behaviour -> new BehaviourFilterCriteria((Behaviour) filter.second);
+            case ShelterId -> new ShelterIdFilterCriteria((int) filter.second);
         };
     }
 }

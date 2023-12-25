@@ -48,7 +48,13 @@ public class FilterService {
         return petRepository.getAllPets(getSpecifications(filters));
     }
 
-    public List<PetHeaderDto> getFilteredPetsHeadersList(int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
+    public List<PetHeaderDto> getFilteredPetsHeadersListByShelterId(int shelterId, int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
+        filters.add(new FilterRelationList<>(FilterTypes.ShelterId, shelterId));
+        return this.dashboardRepositoryService.getFilteredPage(pageIndex, pageSize, getSpecifications(filters));
+    }
+
+    public List<PetHeaderDto> getFilteredAvailablePetsHeadersList(int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
+        filters.add(new FilterRelationList<>(FilterTypes.Availability, Availability.AVAILABLE));
         return this.dashboardRepositoryService.getFilteredPage(pageIndex, pageSize, getSpecifications(filters));
     }
 }
