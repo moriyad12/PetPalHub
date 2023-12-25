@@ -11,7 +11,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "staff")
 public class Staff extends User {
 

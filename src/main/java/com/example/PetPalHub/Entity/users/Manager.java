@@ -9,7 +9,6 @@ import lombok.experimental.SuperBuilder;
 
 @Entity
 @SuperBuilder
-@AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Table(name = "manager")

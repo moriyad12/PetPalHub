@@ -18,7 +18,6 @@ public class StaffRepositoryService {
         staffRepository.save(staff);
     }
 
-
     public void deleteById(int id) {
         Optional<Staff> staff = staffRepository.findById(id);
         if (staff.isEmpty())

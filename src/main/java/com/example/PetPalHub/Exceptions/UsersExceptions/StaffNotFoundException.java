@@ -6,6 +6,6 @@ import org.springframework.http.HttpStatus;
 public class StaffNotFoundException extends BaseException {
     public StaffNotFoundException() {
         this.message = " Staff Not Found ";
-        this.httpStatus = HttpStatus.BAD_REQUEST;
+        this.httpStatus = HttpStatus.NOT_FOUND;
     }
 }

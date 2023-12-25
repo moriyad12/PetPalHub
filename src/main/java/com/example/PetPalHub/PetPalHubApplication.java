@@ -22,10 +22,6 @@ public class PetPalHubApplication {
     @Bean
     public CommandLineRunner commandLineRunner(AdopterRepositoryService adopterRepos) {
         return runner -> {
-            Adopter adopter1 = Adopter.builder().email("ahmed").role(Role.ADOPTER).firstName("ahmed").lastName("ahmed").password("pass").gender(Gender.MALE).phoneNumber("012").build();
-            adopterRepos.add(adopter1);
-            Adopter adopter = adopterRepos.findByEmail("ahmed");
-            System.out.println(adopter);
 
         };
     }

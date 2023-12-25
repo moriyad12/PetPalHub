@@ -6,6 +6,6 @@ import org.springframework.http.HttpStatus;
 public class ManagerNotFoundException extends BaseException {
     public ManagerNotFoundException() {
         this.message = " Manager Not Found ";
-        this.httpStatus = HttpStatus.BAD_REQUEST;
+        this.httpStatus = HttpStatus.NOT_FOUND;
     }
 }

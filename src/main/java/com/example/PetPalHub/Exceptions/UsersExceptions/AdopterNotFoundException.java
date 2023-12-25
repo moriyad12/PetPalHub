@@ -6,6 +6,6 @@ import org.springframework.http.HttpStatus;
 public class AdopterNotFoundException extends BaseException {
     public AdopterNotFoundException() {
         this.message = " Adopter Not Found ";
-        this.httpStatus = HttpStatus.BAD_REQUEST;
+        this.httpStatus = HttpStatus.NOT_FOUND;
     }
 }
