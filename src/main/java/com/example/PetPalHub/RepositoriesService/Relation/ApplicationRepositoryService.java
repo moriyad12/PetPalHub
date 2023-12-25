@@ -1,5 +1,6 @@
 package com.example.PetPalHub.RepositoriesService.Relation;
 
+import com.example.PetPalHub.Dto.ApplicationDto;
 import com.example.PetPalHub.Entities.Enums.Status;
 import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
@@ -12,8 +13,10 @@ import com.example.PetPalHub.RepositoriesService.Shelter.PetRepositoryService;
 import com.example.PetPalHub.RepositoriesService.Shelter.ShelterRepositoryService;
 import com.example.PetPalHub.RepositoriesService.users.AdopterRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -62,6 +65,15 @@ public class ApplicationRepositoryService {
     public List<AdopterPetApplication> getByPet_Shelter_IdAndStatus(int shelterId,Status status) {
         Shelter shelter = shelterRepositoryService.getShelterById(shelterId);
         return applicationRepository.findByPet_ShelterAndStatus(shelter, status);
+    }
+    public List<ApplicationDto> getApplicationDtos(int adopterId,PageRequest pageRequest) {
+        Adopter adopter = adopterRepositoryService.findById(adopterId);
+        List<AdopterPetApplication> applications = applicationRepository.findByAdopter(adopter);
+        List<ApplicationDto> applicationDtoList = new ArrayList<>();
+        for (AdopterPetApplication adopterPetApplication : applications) {
+            applicationDtoList.add(new ApplicationDto(adopterPetApplication));
+        }
+        return applicationDtoList;
     }
 
     public List<AdopterPetApplication> getApplicationsByAdopterId(int adopterId) {
