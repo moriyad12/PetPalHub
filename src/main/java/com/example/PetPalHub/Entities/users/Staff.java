@@ -3,6 +3,7 @@ package com.example.PetPalHub.Entities.users;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -11,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @Table(name = "Staff")
+@EqualsAndHashCode
 public class Staff extends User {
 
 }

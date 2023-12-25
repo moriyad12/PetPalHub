@@ -1,6 +1,7 @@
 package com.example.PetPalHub.RepositoriesService.users;
 
 import com.example.PetPalHub.Entities.users.Manager;
+import com.example.PetPalHub.Exceptions.UsersExceptions.AlreadyFoundException;
 import com.example.PetPalHub.Exceptions.UsersExceptions.ManagerNotFoundException;
 import com.example.PetPalHub.Repositories.users.ManagerRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,8 @@ public class ManagerRepositoryService {
     private final ManagerRepository managerRepository;
 
     public void add(Manager manager) {
+        if(managerRepository.findByEmail(manager.getEmail()).isPresent()||managerRepository.existsById(manager.getId()))
+            throw new AlreadyFoundException();
         managerRepository.save(manager);
     }
 
@@ -34,11 +37,9 @@ public class ManagerRepositoryService {
     }
 
     public void delete(Manager manager) {
-        try {
-            managerRepository.delete(manager);
-        } catch (Exception e) {
+        if (!managerRepository.existsById(manager.getId()))
             throw new ManagerNotFoundException();
-        }
+        managerRepository.delete(manager);
     }
 
     public Manager findById(int id) {

@@ -2,10 +2,12 @@ package com.example.PetPalHub.RepositoriesService.users;
 
 import com.example.PetPalHub.Entities.users.Adopter;
 import com.example.PetPalHub.Exceptions.UsersExceptions.AdopterNotFoundException;
+import com.example.PetPalHub.Exceptions.UsersExceptions.AlreadyFoundException;
 import com.example.PetPalHub.Repositories.users.AdopterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.rmi.AlreadyBoundException;
 import java.util.Optional;
 
 @Service
@@ -15,9 +17,10 @@ public class AdopterRepositoryService {
     private final AdopterRepository adopterRepository;
 
     public void add(Adopter adopter) {
+        if(adopterRepository.findByEmail(adopter.getEmail()).isPresent()||adopterRepository.existsById(adopter.getId()))
+            throw new AlreadyFoundException();
         adopterRepository.save(adopter);
     }
-
     public void deleteById(int id) {
         Optional<Adopter> adopter = adopterRepository.findById(id);
         if (adopter.isEmpty())
@@ -33,11 +36,9 @@ public class AdopterRepositoryService {
     }
 
     public void delete(Adopter adopter) {
-        try {
-            adopterRepository.delete(adopter);
-        } catch (Exception e) {
+        if(!adopterRepository.existsById(adopter.getId()))
             throw new AdopterNotFoundException();
-        }
+        adopterRepository.delete(adopter);
     }
 
     public Adopter findById(int id) {

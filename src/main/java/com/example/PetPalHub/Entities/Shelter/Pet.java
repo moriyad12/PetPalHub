@@ -1,11 +1,17 @@
 package com.example.PetPalHub.Entities.Shelter;
 
+import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Enums.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
+
+@EqualsAndHashCode
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,4 +46,9 @@ public class Pet {
             referencedColumnName = "id"
     )
     private Shelter shelter;
+
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy  = "pet",fetch = FetchType.EAGER)
+    private List<AdopterPetApplication> adopterPetApplicationList;
+
 }
