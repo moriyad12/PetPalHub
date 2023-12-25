@@ -6,4 +6,6 @@ public class BaseException extends RuntimeException
 {
     public HttpStatus httpStatus = HttpStatus.NOT_FOUND;
     public String message = "Message not set for this class yet";
+
 }
+
