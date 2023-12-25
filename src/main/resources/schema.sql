@@ -77,6 +77,7 @@ CREATE TABLE Manager (
 CREATE TABLE Application (
     pet_id INT,
     adopter_id INT,
+    application_date DATE NOT NULL,
     status INT NOT NULL,
     PRIMARY KEY (pet_id, adopter_id),
     FOREIGN KEY (pet_id) REFERENCES Pet(id),

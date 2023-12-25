@@ -4,8 +4,11 @@ package com.example.PetPalHub.Entities.Relation;
 import com.example.PetPalHub.Entities.Enums.Status;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Entities.users.Adopter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Date;
 
 @Table(name = "Application")
 @IdClass(AdopterPetApplicationComposite.class)
@@ -30,6 +33,10 @@ public class AdopterPetApplication {
 
     @Column(nullable = false)
     private Status status;
+
+    @JsonIgnore
+    @Column(nullable = false)
+    private Date applicationDate;
 
 
 //    @Override

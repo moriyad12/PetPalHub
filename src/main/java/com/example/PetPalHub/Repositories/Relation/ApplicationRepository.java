@@ -1,5 +1,6 @@
 package com.example.PetPalHub.Repositories.Relation;
 
+import com.example.PetPalHub.Entities.Enums.Status;
 import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Entities.users.Adopter;
@@ -11,18 +12,16 @@ import java.util.List;
 @Repository
 public interface ApplicationRepository extends JpaRepository<AdopterPetApplication, Integer> {
 
-
+    AdopterPetApplication findByAdopterAndPet(Adopter adopter, Pet pet);
     List<AdopterPetApplication> findByAdopter(Adopter adopter);
 
     List<AdopterPetApplication> findByPet(Pet pet);
 
+    List<AdopterPetApplication> findByStatus(Status status);
 
-    List<AdopterPetApplication> findByStatus(int status);
+    List<AdopterPetApplication> findByAdopterAndStatus(Adopter adopter, Status status);
 
-    // Find all applications for a given adopter and status
-    List<AdopterPetApplication> findByAdopterAndStatus(Adopter adopter, int status);
+    List<AdopterPetApplication> findByPetAndStatus(Pet pet, Status status);
 
-    // Find all applications for a given pet and status
-    List<AdopterPetApplication> findByPetAndStatus(Pet pet, int status);
 
 }

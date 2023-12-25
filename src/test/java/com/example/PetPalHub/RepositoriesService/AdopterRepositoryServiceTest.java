@@ -1,4 +1,4 @@
-package com.example.PetPalHub.RepositoryService.users;
+package com.example.PetPalHub.RepositoriesService;
 
 import com.example.PetPalHub.Creators.AdopterCustomCreator;
 import com.example.PetPalHub.RepositoriesService.users.AdopterRepositoryService;
