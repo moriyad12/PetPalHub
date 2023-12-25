@@ -1,10 +1,11 @@
 package com.example.PetPalHub.RepositoriesService.Dashboard;
 
+import com.example.PetPalHub.Dto.ApplicationDto;
 import com.example.PetPalHub.Dto.PetHeaderDto;
 import com.example.PetPalHub.Entities.Shelter.Pet;
-import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Exceptions.DashboardException.InvalidPageIndex;
 import com.example.PetPalHub.Exceptions.DashboardException.InvalidPageSize;
+import com.example.PetPalHub.RepositoriesService.Relation.ApplicationRepositoryService;
 import com.example.PetPalHub.RepositoriesService.Shelter.PetRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -18,11 +19,14 @@ import java.util.List;
 public class DashboardRepositoryService {
     @Autowired
     private PetRepositoryService petRepositoryService;
+    @Autowired
+    private ApplicationRepositoryService applicationRepositoryService;
     private int pageSize;
     private PageRequest pageWithRecords;
     private List<PetHeaderDto> petHeaderDtos;
+    private List<ApplicationDto> applicationDtos;
 
-    public List<PetHeaderDto> getFilteredPage(int pageIndex, int pageSize, Specification<Pet> specification) {
+    public List<PetHeaderDto> getFilteredPetsPage(int pageIndex, int pageSize, Specification<Pet> specification) {
         if (pageIndex < 0)
             throw new InvalidPageIndex();
         if (pageSize < 1)
@@ -31,6 +35,17 @@ public class DashboardRepositoryService {
         this.pageWithRecords = PageRequest.of(pageIndex, pageSize, Sort.by(Sort.Direction.DESC, "dateOfBirth"));
         petHeaderDtos = petRepositoryService.getFilteredPetsHeaderDto(pageWithRecords, specification);
         return petHeaderDtos;
+    }
+
+    public List<ApplicationDto> getApplicationsPage(int pageIndex, int pageSize, int adopterId) {
+        if (pageIndex < 0)
+            throw new InvalidPageIndex();
+        if (pageSize < 1)
+            throw new InvalidPageSize();
+        this.pageSize = pageSize;
+        this.pageWithRecords = PageRequest.of(pageIndex, pageSize);
+        applicationDtos = applicationRepositoryService.getApplicationDtos(adopterId, pageWithRecords);
+        return applicationDtos;
     }
 
 }

@@ -2,9 +2,7 @@ package com.example.PetPalHub.Services;
 
 
 import com.example.PetPalHub.Dto.PetHeaderDto;
-import com.example.PetPalHub.Entities.Enums.Availability;
 import com.example.PetPalHub.Entities.Shelter.Pet;
-import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Filters.Enums.FilterTypes;
 import com.example.PetPalHub.Filters.FilterCriteria;
 import com.example.PetPalHub.Filters.FilterFactory;
