@@ -19,7 +19,4 @@ public interface PetRepository extends JpaRepository<Pet, Integer> , JpaSpecific
     List<Pet> findByShelterId(int shelterId);
     List<Pet> findAll(@Nullable Specification<Pet> specification);
 
-    @Query("SELECT p FROM Pet p WHERE p.shelter = :shelter")
-    Page<Pet> find(@Param("shelter") Shelter shelter, @Nullable Specification<Pet> specification, PageRequest pageRequest);
-
 }

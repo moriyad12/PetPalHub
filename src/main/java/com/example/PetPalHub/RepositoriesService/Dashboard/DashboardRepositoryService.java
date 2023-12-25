@@ -33,15 +33,4 @@ public class DashboardRepositoryService {
         return petHeaderDtos;
     }
 
-    public List<PetHeaderDto> getFilteredPageByShelter(Shelter shelter, int pageIndex, int pageSize, Specification<Pet> specification) {
-        if (pageIndex < 0)
-            throw new InvalidPageIndex();
-        if (pageSize < 1)
-            throw new InvalidPageSize();
-        this.pageSize = pageSize;
-        this.pageWithRecords = PageRequest.of(pageIndex, pageSize, Sort.by(Sort.Direction.DESC, "dateOfBirth"));
-        petHeaderDtos = petRepositoryService.getFilteredPetsByShelterHeaderDto(shelter, pageWithRecords, specification);
-        return petHeaderDtos;
-    }
-
 }

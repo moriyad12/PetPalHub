@@ -51,9 +51,4 @@ public class FilterService {
     public List<PetHeaderDto> getFilteredPetsHeadersList(int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
         return this.dashboardRepositoryService.getFilteredPage(pageIndex, pageSize, getSpecifications(filters));
     }
-
-    public List<PetHeaderDto> getFilteredPetsHeadersListByShelter(int shelterId, int pageIndex, int pageSize, List<FilterRelationList<FilterTypes, Object>> filters) {
-        Shelter shelter = shelterRepositoryService.getShelterById(shelterId);
-        return this.dashboardRepositoryService.getFilteredPageByShelter(shelter, pageIndex, pageSize, getSpecifications(filters));
-    }
 }

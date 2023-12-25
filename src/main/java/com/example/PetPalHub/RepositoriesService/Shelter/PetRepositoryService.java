@@ -64,12 +64,4 @@ public class PetRepositoryService {
         return petHeaderDtos;
     }
 
-    public List<PetHeaderDto> getFilteredPetsByShelterHeaderDto(Shelter shelter, PageRequest pageRequest, Specification<Pet> specification) {
-        List<Pet> pets = petRepository.find(shelter, specification, pageRequest).getContent();
-        List<PetHeaderDto> petHeaderDtos = new ArrayList<>();
-        for (Pet pet : pets) {
-            petHeaderDtos.add(new PetHeaderDto(pet));
-        }
-        return petHeaderDtos;
-    }
 }
