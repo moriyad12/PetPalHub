@@ -38,5 +38,16 @@ public class ShelterRepositoryService {
         return shelterRepository.findAll();
     }
 
+    public boolean existByCode(String code) {
+       return shelterRepository.existsByCode(code);
+    }
+    public Shelter findByCode(String code) {
+        return shelterRepository.findByCode(code);
+    }
+
+    public boolean existsById(int id) {
+        return shelterRepository.existsById(id);
+    }
+
 
 }

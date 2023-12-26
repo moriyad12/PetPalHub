@@ -24,6 +24,7 @@ CREATE TABLE Shelter (
     name VARCHAR(255) NOT NULL,
 	phone_number int,
     location_id INT,
+    code VARCHAR(50) DEFAULT '000000',
     FOREIGN KEY (location_id) REFERENCES Location(id)
 );
 
@@ -50,10 +51,12 @@ CREATE TABLE Users (
     phone_number VARCHAR(20),
     role INT NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    gender INT NOT NULL
+    gender INT NOT NULL,
+    enabled BOOLEAN NOT NULL DEFAULT FALSE,
+    sign_in_with_email BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 -- Create Adopter table
@@ -65,13 +68,17 @@ CREATE TABLE Adopter (
 -- Create Staff table
 CREATE TABLE Staff (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES Users (id)
+    shelter_id INT,
+    FOREIGN KEY (id) REFERENCES Users (id),
+    FOREIGN KEY (shelter_id) REFERENCES Shelter(id)
 );
 
 -- Create Manager table
 CREATE TABLE Manager (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES Users (id)
+    shelter_id INT,
+    FOREIGN KEY (id) REFERENCES Users (id),
+    FOREIGN KEY (shelter_id) REFERENCES Shelter(id)
 );
 
 CREATE TABLE Application (

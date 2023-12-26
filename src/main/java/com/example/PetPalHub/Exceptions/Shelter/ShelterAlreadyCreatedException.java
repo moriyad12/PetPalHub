@@ -8,4 +8,8 @@ public class ShelterAlreadyCreatedException extends BaseException {
         this.message = "Shelter with id " + id + " already exists";
         this.httpStatus = HttpStatus.CONFLICT;
     }
+    public ShelterAlreadyCreatedException(String code) {
+        this.message = "Shelter with code " + code + " already exists";
+        this.httpStatus = HttpStatus.CONFLICT;
+    }
 }
