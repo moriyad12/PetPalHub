@@ -14,9 +14,9 @@ public class EmailSenderService {
         message.setTo(to);
         message.setSubject(subject);
         message.setText(
-                "Hello\t" + name + "\n\n" + "Thanks for signing up with EventHorizon\n\n" +
+                "Hello\t" + name + "\n\n" + "Thanks for signing up with PetPal Hub\n\n" +
                         "To verify your email please use the next code" + "\n\n" + "Verification Code :\t" + verifyCode + "\n\n" + "We look forward to see you in next event\n\n" + "Sincerely,\n" +
-                        "EventHorizon Team"
+                        "PetPal Hub Team"
         );
         javaMailSender.send(message);
     }

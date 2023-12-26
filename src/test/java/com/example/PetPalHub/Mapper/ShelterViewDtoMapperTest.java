@@ -25,7 +25,7 @@ class ShelterViewDtoMapperTest {
 
     @Test
     public void testGetDtoToView() {
-        Shelter shelter = new Shelter(1, "Test Shelter", "1234567890", new Location(1, "Country", "City", "Address"));
+        Shelter shelter = new Shelter(1, "Test Shelter", "1234567890", new Location(1, "Country", "City", "Address"),"tes");
         ShelterViewDto shelterViewDto = shelterViewDtoMapper.getDtoToView(shelter);
         assertEquals(shelter.getId(), shelterViewDto.getId());
         assertEquals(shelter.getName(), shelterViewDto.getName());
@@ -38,7 +38,7 @@ class ShelterViewDtoMapperTest {
     @Test
     public void testGetShelterWhenUpdate() {
         ShelterViewDto shelterViewDto = new ShelterViewDto(1, "Updated Shelter", "9876543210", new LocationDto(1, "Updated Country", "Updated City", "Updated Address"));
-        Shelter existingShelter = new Shelter(1, "Original Shelter", "1234567890", new Location(1, "Country", "City", "Address"));
+        Shelter existingShelter = new Shelter(1, "Original Shelter", "1234567890", new Location(1, "Country", "City", "Address"),"tes");
         when(shelterRepositoryService.getShelterById(anyInt())).thenReturn(existingShelter);
         Shelter updatedShelter = shelterViewDtoMapper.getShelterWhenUpdate(shelterViewDto);
         assertEquals(existingShelter.getId(), updatedShelter.getId());
