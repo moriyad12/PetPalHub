@@ -19,4 +19,6 @@ public interface PetRepository extends JpaRepository<Pet, Integer> , JpaSpecific
     List<Pet> findByShelterId(int shelterId);
     List<Pet> findAll(@Nullable Specification<Pet> specification);
 
+    List<Pet> findByName(String s);
+
 }
