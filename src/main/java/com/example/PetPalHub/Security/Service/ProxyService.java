@@ -155,7 +155,7 @@ public class ProxyService {
         }
         Shelter shelter = shelterRepositoryService.findByCode(registerRequest.getShelterCode());
         if (shelter.getId() != registerRequest.getShelterId()) {
-            throw new ShelterNotFoundException(registerRequest.getShelterCode());
+            throw new ShelterNotFoundException(registerRequest.getShelterId());
         }
         Staff staff = createStaff(registerRequest);
         staff.setShelter(shelter);
