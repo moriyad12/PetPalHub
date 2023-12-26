@@ -28,4 +28,6 @@ public class Shelter {
     )
     private Location shelterLocation;
 
+    private String code;
+
 }

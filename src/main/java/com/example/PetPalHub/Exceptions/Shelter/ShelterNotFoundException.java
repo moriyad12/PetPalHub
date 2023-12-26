@@ -8,4 +8,8 @@ public class ShelterNotFoundException extends BaseException {
         this.message = "Shelter with id " + id + " not found";
         this.httpStatus = HttpStatus.NOT_FOUND;
     }
+    public ShelterNotFoundException(String code) {
+        this.message = "Shelter with code " + code + " not found";
+        this.httpStatus = HttpStatus.NOT_FOUND;
+    }
 }
