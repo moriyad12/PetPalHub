@@ -36,19 +36,19 @@ public class MasterController {
     }
 
 
-    @GetMapping("getPendingApplicationByShelterID/{pageIndex}/{pageSize}/{adopterId}/{shelterId}")
+    @GetMapping("getPendingApplicationByShelterID/{pageIndex}/{pageSize}/{shelterId}")
     public ResponseEntity<List<ApplicationDto>> getPendingApplicationByShelterID(@PathVariable int pageIndex, @PathVariable int pageSize, @PathVariable int shelterId) {
         List<ApplicationDto> applicationDtoList = masterControlServices.getPendingApplicationByShelterID(pageIndex, pageSize, shelterId);
         return new ResponseEntity<>(applicationDtoList, HttpStatus.OK);
     }
 
-    @GetMapping("getAcceptedApplicationByShelterID/{pageIndex}/{pageSize}/{adopterId}/{shelterId}")
+    @GetMapping("getAcceptedApplicationByShelterID/{pageIndex}/{pageSize}/{shelterId}")
     public ResponseEntity<List<ApplicationDto>> getAcceptedApplicationByShelterID(@PathVariable int pageIndex, @PathVariable int pageSize, @PathVariable int shelterId) {
         List<ApplicationDto> applicationDtoList = masterControlServices.getAcceptedApplicationByShelterID(pageIndex, pageSize, shelterId);
         return new ResponseEntity<>(applicationDtoList, HttpStatus.OK);
     }
 
-    @GetMapping("getRejectedApplicationByShelterID/{pageIndex}/{pageSize}/{adopterId}/{shelterId}")
+    @GetMapping("getRejectedApplicationByShelterID/{pageIndex}/{pageSize}/{shelterId}")
     public ResponseEntity<List<ApplicationDto>> getRejectedApplicationByShelterID(@PathVariable int pageIndex, @PathVariable int pageSize, @PathVariable int shelterId) {
         List<ApplicationDto> applicationDtoList = masterControlServices.getRejectedApplicationByShelterID(pageIndex, pageSize, shelterId);
         return new ResponseEntity<>(applicationDtoList, HttpStatus.OK);
