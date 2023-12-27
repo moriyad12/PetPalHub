@@ -23,7 +23,7 @@ public class AdopterController {
     @Autowired
     private FilterService filterService;
 
-    @GetMapping("petForUser/{oetId}")
+    @GetMapping("petForUser/{petId}")
     public ResponseEntity<PetViewDto> getPetForUser(@PathVariable int petId) {
         PetViewDto petViewDto = adopterService.viewPet(petId);
         return new ResponseEntity<>(petViewDto, HttpStatus.OK);
