@@ -1,5 +1,6 @@
 package com.example.PetPalHub.Services;
 
+import com.example.PetPalHub.Dto.ApplicationDto;
 import com.example.PetPalHub.Dto.PetViewDto;
 import com.example.PetPalHub.Entities.Enums.Availability;
 import com.example.PetPalHub.Entities.Enums.Status;
@@ -24,7 +25,7 @@ public class MasterControlServices {
     PetRepositoryService petRepositoryService;
 
     @Autowired
-    FilterService filterService;
+    DashboardRepositoryService dashboardRepositoryService;
     @Autowired
     PetViewDtoMapper petViewDtoMapper;
 
@@ -39,16 +40,16 @@ public class MasterControlServices {
         applicationRepositoryService.updateApplicationStatus(adoptedId, petId, Status.REJECTED);
     }
 
-    public List<AdopterPetApplication> getPendingApplicationByShelterID(int shelterId) {
-        return applicationRepositoryService.getByPet_Shelter_IdAndStatus(shelterId, Status.PENDING);
+    public List<ApplicationDto> getPendingApplicationByShelterID(int pageIndex, int pageSize, int shelterId) {
+        return dashboardRepositoryService.getApplicationByShelterIDAndStatusPage(pageIndex, pageSize, shelterId, Status.PENDING);
     }
 
-    public List<AdopterPetApplication> getAcceptedApplicationByShelterID(int shelterId) {
-        return applicationRepositoryService.getByPet_Shelter_IdAndStatus(shelterId, Status.ACCEPTED);
+    public List<ApplicationDto> getAcceptedApplicationByShelterID(int pageIndex, int pageSize,int shelterId) {
+        return dashboardRepositoryService.getApplicationByShelterIDAndStatusPage(pageIndex, pageSize, shelterId, Status.ACCEPTED);
     }
 
-    public List<AdopterPetApplication> getRejectedApplicationByShelterID(int shelterId) {
-        return applicationRepositoryService.getByPet_Shelter_IdAndStatus(shelterId, Status.REJECTED);
+    public List<ApplicationDto> getRejectedApplicationByShelterID(int pageIndex, int pageSize,int shelterId) {
+        return dashboardRepositoryService.getApplicationByShelterIDAndStatusPage(pageIndex, pageSize, shelterId, Status.REJECTED);
     }
 
     public void addPet(PetViewDto petViewDto) {

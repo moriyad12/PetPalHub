@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.Date;
 import java.util.List;
@@ -72,7 +73,8 @@ public class ApplicationRepositoryServiceTest {
     public void getByPet_Shelter_IdAndStatusTest() {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
-        List<AdopterPetApplication> list = applicationRepositoryService.getByPet_Shelter_IdAndStatus(a.getPet().getShelter().getId(), a.getStatus());
+        PageRequest pageWithRecords = PageRequest.of(1, 50);
+        List<AdopterPetApplication> list = applicationRepositoryService.getByPet_Shelter_IdAndStatus(a.getPet().getShelter().getId(), a.getStatus(),pageWithRecords);
         boolean found = true;
         for (AdopterPetApplication application : list) {
             if (application.getPet().getShelter().getId() != a.getPet().getShelter().getId()

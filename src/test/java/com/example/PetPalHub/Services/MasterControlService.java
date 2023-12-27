@@ -3,6 +3,7 @@ package com.example.PetPalHub.Services;
 import com.example.PetPalHub.Creators.AdopterCustomCreator;
 import com.example.PetPalHub.Creators.PetCustomCreator;
 import com.example.PetPalHub.Creators.ShelterCustomCreator;
+import com.example.PetPalHub.Dto.ApplicationDto;
 import com.example.PetPalHub.Dto.PetViewDto;
 import com.example.PetPalHub.Entities.Enums.Availability;
 import com.example.PetPalHub.Entities.Enums.Status;
@@ -78,43 +79,48 @@ public class MasterControlService {
     public void getPendingApplicationByShelterIDTest() {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
-        List<AdopterPetApplication> list = masterControlServices.getPendingApplicationByShelterID(a.getPet().getShelter().getId());
+        List<ApplicationDto> list = masterControlServices.getPendingApplicationByShelterID(1,50,a.getPet().getShelter().getId());
         boolean found = true;
-        for (AdopterPetApplication application : list) {
-            if (application.getPet().getShelter().getId() != a.getPet().getShelter().getId() || application.getStatus()!=Status.PENDING) {
+        for (ApplicationDto application : list) {
+            if (!application.getPetName().equals(a.getPet().getName()) || application.getStatus() != Status.PENDING) {
                 found = false;
                 break;
             }
         }
         Assertions.assertTrue(found);
+        Assertions.assertTrue(list.size()>0);
     }
     @Test
     public void getAcceptedApplicationByShelterIDTest() {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
-        List<AdopterPetApplication> list = masterControlServices.getAcceptedApplicationByShelterID(a.getPet().getShelter().getId());
+        applicationRepositoryService.updateApplicationStatus(a.getAdopter().getId(), a.getPet().getId(),Status.ACCEPTED);
+        List<ApplicationDto> list = masterControlServices.getAcceptedApplicationByShelterID(1,50,a.getPet().getShelter().getId());
         boolean found = true;
-        for (AdopterPetApplication application : list) {
-            if (application.getPet().getShelter().getId() != a.getPet().getShelter().getId() || application.getStatus()!=Status.ACCEPTED) {
+        for (ApplicationDto application : list) {
+            if (!application.getPetName().equals(a.getPet().getName()) || application.getStatus() != Status.ACCEPTED) {
                 found = false;
                 break;
             }
         }
         Assertions.assertTrue(found);
+        Assertions.assertTrue(list.size()>0);
     }
     @Test
     public void getRejectedApplicationByShelterIDTest() {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
-        List<AdopterPetApplication> list = masterControlServices.getRejectedApplicationByShelterID(a.getPet().getShelter().getId());
+        applicationRepositoryService.updateApplicationStatus(a.getAdopter().getId(), a.getPet().getId(),Status.REJECTED);
+        List<ApplicationDto> list = masterControlServices.getRejectedApplicationByShelterID(1, 50, a.getPet().getShelter().getId());
         boolean found = true;
-        for (AdopterPetApplication application : list) {
-            if (application.getPet().getShelter().getId() != a.getPet().getShelter().getId() || application.getStatus() != Status.REJECTED) {
+        for (ApplicationDto application : list) {
+            if (!application.getPetName().equals(a.getPet().getName()) || application.getStatus() != Status.REJECTED) {
                 found = false;
                 break;
             }
         }
         Assertions.assertTrue(found);
+        Assertions.assertTrue(list.size()>0);
     }
 
 

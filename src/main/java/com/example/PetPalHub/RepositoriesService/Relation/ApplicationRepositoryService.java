@@ -62,7 +62,7 @@ public class ApplicationRepositoryService {
         return adopterPetApplication.get();
     }
 
-    public List<AdopterPetApplication> getByPet_Shelter_IdAndStatus(int shelterId,Status status) {
+    public List<AdopterPetApplication> getByPet_Shelter_IdAndStatus(int shelterId,Status status,PageRequest pageRequest) {
         Shelter shelter = shelterRepositoryService.getShelterById(shelterId);
         return applicationRepository.findByPet_ShelterAndStatus(shelter, status);
     }
