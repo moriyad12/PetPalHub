@@ -88,11 +88,13 @@ public class MasterControlService {
             }
         }
         Assertions.assertTrue(found);
+        Assertions.assertTrue(list.size()>0);
     }
     @Test
     public void getAcceptedApplicationByShelterIDTest() {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
+        applicationRepositoryService.updateApplicationStatus(a.getAdopter().getId(), a.getPet().getId(),Status.ACCEPTED);
         List<ApplicationDto> list = masterControlServices.getAcceptedApplicationByShelterID(1,50,a.getPet().getShelter().getId());
         boolean found = true;
         for (ApplicationDto application : list) {
@@ -102,11 +104,13 @@ public class MasterControlService {
             }
         }
         Assertions.assertTrue(found);
+        Assertions.assertTrue(list.size()>0);
     }
     @Test
     public void getRejectedApplicationByShelterIDTest() {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
+        applicationRepositoryService.updateApplicationStatus(a.getAdopter().getId(), a.getPet().getId(),Status.REJECTED);
         List<ApplicationDto> list = masterControlServices.getRejectedApplicationByShelterID(1, 50, a.getPet().getShelter().getId());
         boolean found = true;
         for (ApplicationDto application : list) {
@@ -116,6 +120,7 @@ public class MasterControlService {
             }
         }
         Assertions.assertTrue(found);
+        Assertions.assertTrue(list.size()>0);
     }
 
 
