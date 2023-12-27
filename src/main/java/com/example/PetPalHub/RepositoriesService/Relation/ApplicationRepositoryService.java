@@ -64,11 +64,11 @@ public class ApplicationRepositoryService {
 
     public List<AdopterPetApplication> getByPet_Shelter_IdAndStatus(int shelterId,Status status,PageRequest pageRequest) {
         Shelter shelter = shelterRepositoryService.getShelterById(shelterId);
-        return applicationRepository.findByPet_ShelterAndStatus(shelter, status);
+        return applicationRepository.findByPet_ShelterAndStatus(shelter, status, pageRequest).getContent();
     }
     public List<ApplicationDto> getApplicationDtos(int adopterId,PageRequest pageRequest) {
         Adopter adopter = adopterRepositoryService.findById(adopterId);
-        List<AdopterPetApplication> applications = applicationRepository.findByAdopter(adopter);
+        List<AdopterPetApplication> applications = applicationRepository.findByAdopter(adopter,pageRequest).getContent();
         List<ApplicationDto> applicationDtoList = new ArrayList<>();
         for (AdopterPetApplication adopterPetApplication : applications) {
             applicationDtoList.add(new ApplicationDto(adopterPetApplication));

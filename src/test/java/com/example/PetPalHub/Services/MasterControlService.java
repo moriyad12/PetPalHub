@@ -79,7 +79,7 @@ public class MasterControlService {
     public void getPendingApplicationByShelterIDTest() {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
-        List<ApplicationDto> list = masterControlServices.getPendingApplicationByShelterID(1,50,a.getPet().getShelter().getId());
+        List<ApplicationDto> list = masterControlServices.getPendingApplicationByShelterID(0,50,a.getPet().getShelter().getId());
         boolean found = true;
         for (ApplicationDto application : list) {
             if (!application.getPetName().equals(a.getPet().getName()) || application.getStatus() != Status.PENDING) {
@@ -95,7 +95,7 @@ public class MasterControlService {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
         applicationRepositoryService.updateApplicationStatus(a.getAdopter().getId(), a.getPet().getId(),Status.ACCEPTED);
-        List<ApplicationDto> list = masterControlServices.getAcceptedApplicationByShelterID(1,50,a.getPet().getShelter().getId());
+        List<ApplicationDto> list = masterControlServices.getAcceptedApplicationByShelterID(0,50,a.getPet().getShelter().getId());
         boolean found = true;
         for (ApplicationDto application : list) {
             if (!application.getPetName().equals(a.getPet().getName()) || application.getStatus() != Status.ACCEPTED) {
@@ -111,7 +111,7 @@ public class MasterControlService {
         AdopterPetApplication a = this.Create();
         applicationRepositoryService.addApplication(a.getAdopter().getId(), a.getPet().getId());
         applicationRepositoryService.updateApplicationStatus(a.getAdopter().getId(), a.getPet().getId(),Status.REJECTED);
-        List<ApplicationDto> list = masterControlServices.getRejectedApplicationByShelterID(1, 50, a.getPet().getShelter().getId());
+        List<ApplicationDto> list = masterControlServices.getRejectedApplicationByShelterID(0, 50, a.getPet().getShelter().getId());
         boolean found = true;
         for (ApplicationDto application : list) {
             if (!application.getPetName().equals(a.getPet().getName()) || application.getStatus() != Status.REJECTED) {
