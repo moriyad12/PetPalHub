@@ -55,7 +55,7 @@ public class MasterController {
     }
 
 
-    @GetMapping("getFilteredPetsHeadersListByShelterId/{shelterId}/{pageIndex}/{pageSize}")
+    @PostMapping("getFilteredPetsHeadersListByShelterId/{shelterId}/{pageIndex}/{pageSize}")
     public ResponseEntity<List<PetHeaderDto>> getFilteredPetsHeadersListByShelterId(@PathVariable int shelterId, @PathVariable int pageIndex, @PathVariable int pageSize, @RequestBody FilterDto filterDto) {
         List<PetHeaderDto> petHeaderDtos = filterService.getFilteredPetsHeadersListByShelterId(shelterId, pageIndex, pageSize, filterDto.getFilters());
         return new ResponseEntity<>(petHeaderDtos, HttpStatus.OK);
