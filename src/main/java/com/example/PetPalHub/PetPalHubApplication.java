@@ -34,10 +34,4 @@ public class PetPalHubApplication {
         SpringApplication.run(PetPalHubApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(EmailSenderService emailSenderService) {
-        return runner -> {
-//            emailSenderService.sendMail("ahmedmohamedhassan1to10@gmail.com", "test", "ahmed", "1234");
-        };
-    }
 }
