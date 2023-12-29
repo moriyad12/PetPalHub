@@ -1,9 +1,7 @@
 package com.example.PetPalHub.Controller;
 
-import com.example.PetPalHub.Dto.ApplicationDto;
-import com.example.PetPalHub.Dto.FilterDto;
-import com.example.PetPalHub.Dto.PetHeaderDto;
-import com.example.PetPalHub.Dto.PetViewDto;
+import com.example.PetPalHub.Dto.*;
+import com.example.PetPalHub.Entities.users.User;
 import com.example.PetPalHub.Services.AdopterService;
 import com.example.PetPalHub.Services.FilterService;
 import com.example.PetPalHub.Services.MasterControlServices;
@@ -72,5 +70,11 @@ public class MasterController {
     public ResponseEntity<Void> editPet(@RequestBody PetViewDto petViewDto) {
         masterControlServices.editPet(petViewDto);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("getShelterDto/{userId}")
+    public ResponseEntity<ShelterViewDto> getShelterDto(@PathVariable int userId) {
+        ShelterViewDto shelterViewDto = masterControlServices.getShelterViewDtoByUserId(userId);
+        return new ResponseEntity<>(shelterViewDto, HttpStatus.OK);
     }
 }

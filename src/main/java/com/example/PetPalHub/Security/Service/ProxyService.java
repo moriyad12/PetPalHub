@@ -2,6 +2,7 @@ package com.example.PetPalHub.Security.Service;
 
 
 import com.example.PetPalHub.Dto.UserDto;
+import com.example.PetPalHub.Entities.Shelter.Location;
 import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.Adopter;
 import com.example.PetPalHub.Entities.users.Manager;
@@ -147,6 +148,12 @@ public class ProxyService {
         }
         Shelter shelter = Shelter.builder().name("New Shelter").code(registerRequest.getShelterCode()).build();
         Manager manager = createManager(registerRequest);
+        Location location= Location.builder()
+                .country("")
+                .city("")
+                .address("")
+                .build();
+        shelter.setShelterLocation(location);
         manager.setShelter(shelter);
         managerRepositoryService.add(manager);
         return manager;
