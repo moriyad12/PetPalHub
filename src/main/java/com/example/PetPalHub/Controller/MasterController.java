@@ -2,6 +2,7 @@ package com.example.PetPalHub.Controller;
 
 import com.example.PetPalHub.Dto.*;
 import com.example.PetPalHub.Entities.users.User;
+import com.example.PetPalHub.Mapper.ShelterViewDtoMapper;
 import com.example.PetPalHub.Services.AdopterService;
 import com.example.PetPalHub.Services.FilterService;
 import com.example.PetPalHub.Services.MasterControlServices;
@@ -20,6 +21,9 @@ public class MasterController {
     private MasterControlServices masterControlServices;
     @Autowired
     private FilterService filterService;
+
+    @Autowired
+    ShelterViewDtoMapper shelterViewDtoMapper;
 
     @PostMapping("acceptApplication/{petId}/{adopterId}")
     public ResponseEntity<Void> acceptApplication(@PathVariable int petId, @PathVariable int adopterId) {
@@ -76,5 +80,11 @@ public class MasterController {
     public ResponseEntity<ShelterViewDto> getShelterDto(@PathVariable int userId) {
         ShelterViewDto shelterViewDto = masterControlServices.getShelterViewDtoByUserId(userId);
         return new ResponseEntity<>(shelterViewDto, HttpStatus.OK);
+    }
+
+    @PostMapping("updateShelterDto/{userId}")
+    public ResponseEntity<Void> updateShelterDto(@PathVariable int userId,@RequestBody ShelterViewDto shelterViewDto) {
+        shelterViewDtoMapper.getShelterWhenUpdate(shelterViewDto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

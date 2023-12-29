@@ -216,6 +216,7 @@ public class ProxyService {
                 .id(user.getId())
                 .token(jwt)
                 .role(user.getRole().toString())
+                .shelterId(getShelterId(user))
                 .build();
     }
 
@@ -239,8 +240,28 @@ public class ProxyService {
                 .id(user.getId())
                 .token(jwt)
                 .role(user.getRole().toString())
+                .shelterId(getShelterId(user))
                 .build();
     }
+
+    public int getShelterId(User user) {
+        switch (user.getRole()) {
+            case MANAGER -> {
+                Manager manager = (Manager) user;
+                return manager.getShelter().getId();
+            }
+            case STAFF -> {
+                Staff staff = (Staff) user;
+                return staff.getShelter().getId();
+            }
+            case ADOPTER -> {
+                return 0;
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + user.getRole());
+        }
+    }
+
+
 
     private void putEnable(String mail) {
         User user = userRepositoryService.findByEmail(mail);
