@@ -2,6 +2,7 @@ package com.example.PetPalHub.Security.Service;
 
 
 import com.example.PetPalHub.Dto.UserDto;
+import com.example.PetPalHub.Entities.Shelter.Location;
 import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.Adopter;
 import com.example.PetPalHub.Entities.users.Manager;
@@ -114,6 +115,7 @@ public class ProxyService {
                 .lastName(registerRequest.getLastName())
                 .gender((registerRequest.getGender()))
                 .signInWithEmail(registerRequest.isSignInWithEmail())
+                .phoneNumber(registerRequest.getPhoneNumber())
                 .build();
     }
     public Staff createStaff(UserDto registerRequest) {
@@ -125,6 +127,7 @@ public class ProxyService {
                 .lastName(registerRequest.getLastName())
                 .gender((registerRequest.getGender()))
                 .signInWithEmail(registerRequest.isSignInWithEmail())
+                .phoneNumber(registerRequest.getPhoneNumber())
                 .build();
     }
     public Adopter createAdopter(UserDto registerRequest) {
@@ -136,6 +139,7 @@ public class ProxyService {
                 .lastName(registerRequest.getLastName())
                 .gender((registerRequest.getGender()))
                 .signInWithEmail(registerRequest.isSignInWithEmail())
+                .phoneNumber(registerRequest.getPhoneNumber())
                 .build();
     }
     private Manager saveManager(UserDto registerRequest) {
@@ -144,6 +148,12 @@ public class ProxyService {
         }
         Shelter shelter = Shelter.builder().name("New Shelter").code(registerRequest.getShelterCode()).build();
         Manager manager = createManager(registerRequest);
+        Location location= Location.builder()
+                .country("")
+                .city("")
+                .address("")
+                .build();
+        shelter.setShelterLocation(location);
         manager.setShelter(shelter);
         managerRepositoryService.add(manager);
         return manager;
@@ -242,6 +252,8 @@ public class ProxyService {
         Boolean isEqual = verifyRequest.getVerifyCode().equals(jwtService.extractVerifyCode(verifyRequest.getToken()));
         if (isEqual) {
             putEnable(jwtService.extractUserName(verifyRequest.getToken()));
+        } else {
+            throw new ForbiddenException();
         }
         return isEqual;
     }

@@ -1,6 +1,9 @@
 package com.example.PetPalHub.RepositoriesService.users;
 
+import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.Manager;
+import com.example.PetPalHub.Entities.users.Staff;
+import com.example.PetPalHub.Exceptions.Shelter.ShelterNotFoundException;
 import com.example.PetPalHub.Exceptions.UsersExceptions.AlreadyFoundException;
 import com.example.PetPalHub.Exceptions.UsersExceptions.ManagerNotFoundException;
 import com.example.PetPalHub.Repositories.users.ManagerRepository;
@@ -64,4 +67,10 @@ public class ManagerRepositoryService {
         return manager.get();
     }
 
+    public Shelter findShelterByManagerId(int id) {
+        Optional<Manager> manager = managerRepository.findById(id);
+        if (manager.isEmpty())
+            throw new ShelterNotFoundException();
+        return manager.get().getShelter();
+    }
 }

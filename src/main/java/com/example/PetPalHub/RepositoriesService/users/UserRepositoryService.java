@@ -1,5 +1,6 @@
 package com.example.PetPalHub.RepositoriesService.users;
 
+import com.example.PetPalHub.Entities.Enums.Role;
 import com.example.PetPalHub.Entities.users.Staff;
 import com.example.PetPalHub.Entities.users.User;
 import com.example.PetPalHub.Exceptions.UsersExceptions.StaffNotFoundException;
@@ -37,13 +38,22 @@ public class UserRepositoryService {
             throw new UserNotFoundException();
         return user.get();
     }
-    public boolean existsByEmail(String email){
+
+    public boolean existsByEmail(String email) {
         return userRepository.findByEmail(email).isPresent();
     }
+
     public void deleteById(int id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty())
             throw new StaffNotFoundException();
         userRepository.delete(user.get());
+    }
+
+    public Role getRoleByUserId(int userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty())
+            throw new UserNotFoundException();
+        return user.get().getRole();
     }
 }
