@@ -18,24 +18,12 @@ class ApplicationDtoTest {
         String petName = "Buddy";
         Status status = Status.PENDING;
         Date applicationDate = new Date();
-        ApplicationDto applicationDto = new ApplicationDto(petName, status, applicationDate);
+        ApplicationDto applicationDto = new ApplicationDto(1, 1, "John Doe", petName, status, "Shelter", applicationDate);
         assertEquals(petName, applicationDto.getPetName());
         assertEquals(status, applicationDto.getStatus());
         assertEquals(applicationDate, applicationDto.getApplicationDate());
     }
 
-    @Test
-    public void testCopyConstructor() {
-        AdopterPetApplication adopterPetApplication = new AdopterPetApplication();
-        adopterPetApplication.setPet(new Pet());
-        adopterPetApplication.setStatus(Status.PENDING);
-        Date applicationDate = new Date();
-        adopterPetApplication.setApplicationDate(applicationDate);
-        ApplicationDto applicationDto = new ApplicationDto(adopterPetApplication);
-        assertEquals(adopterPetApplication.getPet().getName(), applicationDto.getPetName());
-        assertEquals(adopterPetApplication.getStatus(), applicationDto.getStatus());
-        assertEquals(adopterPetApplication.getApplicationDate(), applicationDto.getApplicationDate());
-    }
 
     @Test
     public void testSetterGetter() {

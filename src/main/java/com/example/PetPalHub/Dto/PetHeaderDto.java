@@ -17,11 +17,13 @@ public class PetHeaderDto {
     private String species;
     private Gender gender;
     private HealthStatus healthStatus;
+    private String ShelterName;
     public PetHeaderDto(Pet pet){
         this.id = pet.getId();
         this.name = pet.getName();
         this.gender = pet.getGender();
         this.healthStatus = pet.getHealthStatus();
         this.species = pet.getSpecies();
+        this.ShelterName = pet.getShelter().getName();
     }
 }
