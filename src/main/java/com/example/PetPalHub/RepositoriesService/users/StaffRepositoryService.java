@@ -66,10 +66,4 @@ public class StaffRepositoryService {
         return staff.get();
     }
 
-    public Shelter findShelterByStaffId(int id) {
-        Optional<Staff> staff = staffRepository.findById(id);
-        if (staff.isEmpty())
-            throw new ShelterNotFoundException();
-        return staff.get().getShelter();
-    }
 }

@@ -12,9 +12,11 @@ import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.User;
 import com.example.PetPalHub.Mapper.PetViewDtoMapper;
 import com.example.PetPalHub.Mapper.ShelterViewDtoMapper;
+import com.example.PetPalHub.Repositories.Shelter.ShelterRepository;
 import com.example.PetPalHub.RepositoriesService.Dashboard.DashboardRepositoryService;
 import com.example.PetPalHub.RepositoriesService.Relation.ApplicationRepositoryService;
 import com.example.PetPalHub.RepositoriesService.Shelter.PetRepositoryService;
+import com.example.PetPalHub.RepositoriesService.Shelter.ShelterRepositoryService;
 import com.example.PetPalHub.RepositoriesService.users.ManagerRepositoryService;
 import com.example.PetPalHub.RepositoriesService.users.StaffRepositoryService;
 import com.example.PetPalHub.RepositoriesService.users.UserRepositoryService;
@@ -32,19 +34,14 @@ public class MasterControlServices {
     PetRepositoryService petRepositoryService;
 
     @Autowired
-    UserRepositoryService userRepositoryService;
-
-    @Autowired
-    ManagerRepositoryService managerRepositoryService;
-    @Autowired
-    StaffRepositoryService staffRepositoryService;
-    @Autowired
     DashboardRepositoryService dashboardRepositoryService;
     @Autowired
     PetViewDtoMapper petViewDtoMapper;
 
     @Autowired
     ShelterViewDtoMapper shelterViewDtoMapper;
+    @Autowired
+    private ShelterRepositoryService shelterRepositoryService;
 
     public void acceptApplication(int adoptedId, int petId) {
         applicationRepositoryService.updateApplicationStatus(adoptedId, petId, Status.ACCEPTED);
@@ -79,16 +76,13 @@ public class MasterControlServices {
         petRepositoryService.addPet(pet);
     }
 
-    public ShelterViewDto getShelterViewDtoByUserId(int userId) {
-        Role role = userRepositoryService.getRoleByUserId(userId);
-        if (role == Role.STAFF) {
-            Shelter shelter = staffRepositoryService.findShelterByStaffId(userId);
-            return shelterViewDtoMapper.getDtoToView(shelter);
-        } else if (role == Role.MANAGER) {
-            Shelter shelter = managerRepositoryService.findShelterByManagerId(userId);
-            return shelterViewDtoMapper.getDtoToView(shelter);
-        }
-        throw new RuntimeException();
+    public ShelterViewDto getShelterViewDtoByShelterId(int shelterId) {
+        Shelter shelter = shelterRepositoryService.getShelterById(shelterId);
+        return shelterViewDtoMapper.getDtoToView(shelter);
+    }
+
+    public void updateShelter(ShelterViewDto shelterViewDto) {
+        shelterRepositoryService.updateShelter(shelterViewDtoMapper.getShelterWhenUpdate(shelterViewDto));
     }
 
 }

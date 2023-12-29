@@ -67,10 +67,4 @@ public class ManagerRepositoryService {
         return manager.get();
     }
 
-    public Shelter findShelterByManagerId(int id) {
-        Optional<Manager> manager = managerRepository.findById(id);
-        if (manager.isEmpty())
-            throw new ShelterNotFoundException();
-        return manager.get().getShelter();
-    }
 }

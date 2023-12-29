@@ -50,10 +50,4 @@ public class UserRepositoryService {
         userRepository.delete(user.get());
     }
 
-    public Role getRoleByUserId(int userId) {
-        Optional<User> user = userRepository.findById(userId);
-        if (user.isEmpty())
-            throw new UserNotFoundException();
-        return user.get().getRole();
-    }
 }
