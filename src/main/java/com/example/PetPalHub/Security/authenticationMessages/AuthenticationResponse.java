@@ -13,4 +13,5 @@ public class AuthenticationResponse {
     private String token;
     private int id;
     private String role;
+    private int shelterId;
 }
