@@ -70,7 +70,7 @@ public class MasterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("editPet")////check here
+    @PostMapping("editPet")////check here
     public ResponseEntity<Void> editPet(@RequestBody PetViewDto petViewDto) {
         masterControlServices.editPet(petViewDto);
         return new ResponseEntity<>(HttpStatus.OK);

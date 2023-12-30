@@ -73,7 +73,7 @@ public class MasterControlServices {
 
     public void editPet(PetViewDto petViewDto) {
         Pet pet = petViewDtoMapper.getPetWhenUpdate(petViewDto);
-        petRepositoryService.addPet(pet);
+        petRepositoryService.updatePet(pet);
     }
 
     public ShelterViewDto getShelterViewDtoByShelterId(int shelterId) {
