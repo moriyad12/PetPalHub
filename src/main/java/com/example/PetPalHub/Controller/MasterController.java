@@ -76,15 +76,15 @@ public class MasterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("getShelterDto/{userId}")
-    public ResponseEntity<ShelterViewDto> getShelterDto(@PathVariable int userId) {
-        ShelterViewDto shelterViewDto = masterControlServices.getShelterViewDtoByUserId(userId);
+    @GetMapping("getShelterDto/{shelterId}")
+    public ResponseEntity<ShelterViewDto> getShelterDto(@PathVariable int shelterId) {
+        ShelterViewDto shelterViewDto = masterControlServices.getShelterViewDtoByShelterId(shelterId);
         return new ResponseEntity<>(shelterViewDto, HttpStatus.OK);
     }
 
-    @PostMapping("updateShelterDto/{userId}")
-    public ResponseEntity<Void> updateShelterDto(@PathVariable int userId,@RequestBody ShelterViewDto shelterViewDto) {
-        shelterViewDtoMapper.getShelterWhenUpdate(shelterViewDto);
+    @PostMapping("updateShelterDto")
+    public ResponseEntity<Void> updateShelterDto(@RequestBody ShelterViewDto shelterViewDto) {
+        masterControlServices.updateShelter(shelterViewDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
