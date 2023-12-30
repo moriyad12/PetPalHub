@@ -44,13 +44,13 @@ public class FilterServiceTest {
         petReposit.addPet(testPet);
         List<FilterRelationList<FilterTypes,Object>>list= new ArrayList<>();
         list.add(new FilterRelationList<>(FilterTypes.Name,"filterPet"));
-        list.add(new FilterRelationList<>(FilterTypes.Gender,Gender.MALE));
-        list.add(new FilterRelationList<>(FilterTypes.HealthStatus,HealthStatus.HEALTHY));
+        list.add(new FilterRelationList<>(FilterTypes.Gender,Gender.MALE.toString()));
+        list.add(new FilterRelationList<>(FilterTypes.HealthStatus,HealthStatus.HEALTHY.toString()));
         list.add(new FilterRelationList<>(FilterTypes.Availability,Availability.AVAILABLE));
-        list.add(new FilterRelationList<>(FilterTypes.Behaviour,Behaviour.FRIENDLY));
+        list.add(new FilterRelationList<>(FilterTypes.Behaviour,Behaviour.FRIENDLY.toString()));
         list.add(new FilterRelationList<>(FilterTypes.DateOfBirth,new Date(System.currentTimeMillis()+1000L*1000L*1000L)));
         list.add(new FilterRelationList<>(FilterTypes.Species,"filterSpecies"));
-        list.add(new FilterRelationList<>(FilterTypes.VaccineStatus,VaccineStatus.VACCINATED));
+        list.add(new FilterRelationList<>(FilterTypes.VaccineStatus,VaccineStatus.VACCINATED.toString()));
         List<Pet> filteredList = filterService.getFilteredPets(list);
         Assertions.assertEquals(testPet.getId(),filteredList.get(filteredList.size()-1).getId());
     }
@@ -61,13 +61,13 @@ public class FilterServiceTest {
         petReposit.addPet(testPet);
         List<FilterRelationList<FilterTypes,Object>>list= new ArrayList<>();
         list.add(new FilterRelationList<>(FilterTypes.Name,"filterPet2"));
-        list.add(new FilterRelationList<>(FilterTypes.Gender,Gender.MALE));
-        list.add(new FilterRelationList<>(FilterTypes.HealthStatus,HealthStatus.HEALTHY));
+        list.add(new FilterRelationList<>(FilterTypes.Gender,Gender.MALE.toString()));
+        list.add(new FilterRelationList<>(FilterTypes.HealthStatus,HealthStatus.HEALTHY.toString()));
         list.add(new FilterRelationList<>(FilterTypes.Availability,Availability.AVAILABLE));
-        list.add(new FilterRelationList<>(FilterTypes.Behaviour,Behaviour.FRIENDLY));
+        list.add(new FilterRelationList<>(FilterTypes.Behaviour,Behaviour.FRIENDLY.toString()));
         list.add(new FilterRelationList<>(FilterTypes.DateOfBirth,new Date(System.currentTimeMillis()+1000L*1000L*1000L)));
         list.add(new FilterRelationList<>(FilterTypes.Species,"filterSpecies"));
-        list.add(new FilterRelationList<>(FilterTypes.VaccineStatus,VaccineStatus.VACCINATED));
+        list.add(new FilterRelationList<>(FilterTypes.VaccineStatus,VaccineStatus.VACCINATED.toString()));
         List<Pet> filteredList = filterService.getFilteredPets(list);
         Assertions.assertEquals(0,filteredList.size());
     }

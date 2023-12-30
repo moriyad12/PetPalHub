@@ -10,6 +10,7 @@ import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.User;
+import com.example.PetPalHub.MailSender.EmailSenderService;
 import com.example.PetPalHub.Mapper.PetViewDtoMapper;
 import com.example.PetPalHub.Mapper.ShelterViewDtoMapper;
 import com.example.PetPalHub.Repositories.Shelter.ShelterRepository;
@@ -42,15 +43,23 @@ public class MasterControlServices {
     ShelterViewDtoMapper shelterViewDtoMapper;
     @Autowired
     private ShelterRepositoryService shelterRepositoryService;
-
+    @Autowired
+    private UserRepositoryService userRepositoryService;
+    @Autowired
+    private EmailSenderService emailSenderService;
     public void acceptApplication(int adoptedId, int petId) {
         applicationRepositoryService.updateApplicationStatus(adoptedId, petId, Status.ACCEPTED);
         Pet pet = petRepositoryService.getPetById(petId);
+        User user = userRepositoryService.findById(adoptedId);
+        emailSenderService.sendAcceptanceMail(user.getEmail(), user.getFirstName()+" "+user.getLastName(), pet.getName());
         pet.setAvailability(Availability.NOT_AVAILABLE);
         petRepositoryService.updatePet(pet);
     }
 
     public void rejectApplication(int adoptedId, int petId) {
+        User user = userRepositoryService.findById(adoptedId);
+        Pet pet = petRepositoryService.getPetById(petId);
+        emailSenderService.sendRejectionMail(user.getEmail(), user.getFirstName()+" "+user.getLastName(), pet.getName());
         applicationRepositoryService.updateApplicationStatus(adoptedId, petId, Status.REJECTED);
     }
 
