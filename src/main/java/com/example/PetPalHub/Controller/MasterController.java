@@ -62,11 +62,11 @@ public class MasterController {
         List<PetHeaderDto> petHeaderDtos = filterService.getFilteredPetsHeadersListByShelterId(shelterId, pageIndex, pageSize, filterDto.getFilters());
         return new ResponseEntity<>(petHeaderDtos, HttpStatus.OK);
     }
-
+//@RequestBody PetViewDto petViewDto
 
     @PostMapping("addPet")////check here
     public ResponseEntity<Void> addPet(@RequestBody PetViewDto petViewDto) {
-        masterControlServices.addPet(petViewDto);
+       masterControlServices.addPet(petViewDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
