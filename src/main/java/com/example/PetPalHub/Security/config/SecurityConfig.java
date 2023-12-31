@@ -25,10 +25,14 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         c -> c
-//                                .requestMatchers(CommonConfigs.AUTH_WHITELIST)
-//                                .permitAll()
-                                .anyRequest()
+                                .requestMatchers(CommonConfigs.AUTH_WHITELIST)
                                 .permitAll()
+                                .requestMatchers(CommonConfigs.AUTH_AUTHENTICATED)
+                                .authenticated()
+                                .requestMatchers(CommonConfigs.AUTH_ADOPTER)
+                                .hasRole("ADOPTER")
+                                .requestMatchers(CommonConfigs.AUTH_MASTER)
+                                .hasAnyRole("STAFF","MANAGER")
                 ).sessionManagement(
                         s -> s
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
