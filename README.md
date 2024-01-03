@@ -2,7 +2,7 @@
 
 ### A comprehensive platform for shelters, adopters, and furry friends
 
-**PAMS** is a user-friendly software solution designed to streamline pet adoption and shelter operations. We connect animal shelters, staff, potential adopters, and pets, facilitating efficient adoptions and improving the lives of countless creatures.
+**PetPal Hub** is a user-friendly software solution designed to streamline pet adoption and shelter operations. We connect animal shelters, staff, potential adopters, and pets, facilitating efficient adoptions and improving the lives of countless creatures.
 
 ### Key Features:
 
