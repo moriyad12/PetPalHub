@@ -45,7 +45,7 @@ CREATE TABLE Pet (
     shelter_id INT,
     FOREIGN KEY (shelter_id) REFERENCES Shelter(id)
 );
--- Create User table
+
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     phone_number VARCHAR(20),
@@ -55,11 +55,12 @@ CREATE TABLE Users (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     gender INT NOT NULL,
+    profile_picture_path varchar(500),
     enabled BOOLEAN NOT NULL DEFAULT FALSE,
     sign_in_with_email BOOLEAN NOT NULL DEFAULT FALSE
 );
 
--- Create Adopter table
+
 CREATE TABLE Adopter (
     id INT PRIMARY KEY,
     FOREIGN KEY (id) REFERENCES Users (id)

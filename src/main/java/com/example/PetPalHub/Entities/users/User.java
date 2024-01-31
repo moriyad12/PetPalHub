@@ -37,6 +37,7 @@ public class User implements UserDetails {
     protected Gender gender;
     protected boolean enabled;
     protected boolean signInWithEmail;
+    protected String profilePicturePath;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
