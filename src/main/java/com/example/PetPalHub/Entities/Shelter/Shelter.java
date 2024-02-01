@@ -19,6 +19,7 @@ public class Shelter {
     @Column(nullable = false)
     private String name;
     private String phoneNumber;
+    private String description;
     @OneToOne(
             cascade = CascadeType.ALL
     )

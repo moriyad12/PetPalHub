@@ -24,6 +24,7 @@ CREATE TABLE Shelter (
     name VARCHAR(255) NOT NULL,
 	phone_number varchar(20) ,
     location_id INT,
+    description varchar(1000),
     code VARCHAR(50) DEFAULT '000000',
     FOREIGN KEY (location_id) REFERENCES Location(id)
 );
