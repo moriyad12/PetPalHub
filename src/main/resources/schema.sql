@@ -43,6 +43,7 @@ CREATE TABLE Pet (
     image_path VARCHAR(255),
     vaccine_status int NOT NULL,
     shelter_id INT,
+    profile_picture_path varchar(500),
     FOREIGN KEY (shelter_id) REFERENCES Shelter(id)
 );
 

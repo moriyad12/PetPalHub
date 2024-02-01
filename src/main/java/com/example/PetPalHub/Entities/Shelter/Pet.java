@@ -37,6 +37,8 @@ public class Pet {
     private String description;
     private String species;
     private String imagePath;
+    private String profilePicturePath;
+
     @Column(nullable = false)
     private VaccineStatus vaccineStatus;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

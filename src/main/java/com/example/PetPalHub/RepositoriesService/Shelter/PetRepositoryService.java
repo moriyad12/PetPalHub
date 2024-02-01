@@ -64,4 +64,13 @@ public class PetRepositoryService {
         return petHeaderDtos;
     }
 
+    public void updatePetProfilePicture(int petId, String profilePictureURL) {
+        this.checkPetExistance(petId);
+        petRepository.updateProfileImagePictureById(petId, profilePictureURL);
+    }
+
+    public void checkPetExistance(int petId) {
+        if (!petRepository.existsById(petId))
+            throw new PetNotFoundException(petId);
+    }
 }
