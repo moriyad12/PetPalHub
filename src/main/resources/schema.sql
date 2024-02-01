@@ -22,7 +22,7 @@ CREATE TABLE Location (
 CREATE TABLE Shelter (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-	phone_number int,
+	phone_number varchar(20) ,
     location_id INT,
     code VARCHAR(50) DEFAULT '000000',
     FOREIGN KEY (location_id) REFERENCES Location(id)
