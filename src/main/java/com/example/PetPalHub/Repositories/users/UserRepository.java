@@ -19,5 +19,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("UPDATE User u SET u.profilePicturePath = :profileImagePicture WHERE u.id = :userId")
     void updateProfileImagePictureById(Integer userId, String profileImagePicture);
 
-//    void updateProfileImagePictureById(Integer id, byte[] profileImagePicture);
+    boolean existsById(int id);
 }

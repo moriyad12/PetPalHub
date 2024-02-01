@@ -18,6 +18,18 @@ public class UserRepositoryTests {
     private ManagerCustomCreator managerCustomCreator;
 
     @Test
+    public void existsById(){
+        Manager manager = managerCustomCreator.createManager();
+        userRepository.save(manager);
+        Assertions.assertTrue(userRepository.existsById(manager.getId()));
+    }
+
+    @Test
+    public void DoesNotExistById(){
+        Assertions.assertFalse(userRepository.existsById(100000000));
+    }
+
+    @Test
     public void updateProfileImagePath() {
         Manager manager = managerCustomCreator.createManager();
         userRepository.save(manager);
