@@ -38,7 +38,4 @@ public class UserController {
         userRepositoryService.update(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-
 }

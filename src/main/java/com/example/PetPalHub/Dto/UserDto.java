@@ -23,5 +23,4 @@ public class UserDto {
     private int shelterId;
     private Gender gender;
     private boolean signInWithEmail;
-
 }

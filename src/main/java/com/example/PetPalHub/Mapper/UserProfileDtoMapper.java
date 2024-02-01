@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserProfileDtoMapper {
 
-
     public UserProfileDto getDtoToView(User user) {
         return UserProfileDto.builder()
                 .id(user.getId())
@@ -19,8 +18,10 @@ public class UserProfileDtoMapper {
                 .email(user.getEmail())
                 .role(user.getRole())
                 .phoneNumber(user.getPhoneNumber())
+                .profilePicturePath(user.getProfilePicturePath())
                 .build();
     }
+
     public User getUserFromDto(User user,UserProfileDto userProfileDto) {
         user.setGender(userProfileDto.getGender());
         user.setFirstName(userProfileDto.getFirstName());
@@ -28,5 +29,4 @@ public class UserProfileDtoMapper {
         user.setPhoneNumber(userProfileDto.getPhoneNumber());
         return user;
     }
-
 }
