@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/master/")
 @CrossOrigin("*")
@@ -37,7 +38,6 @@ public class MasterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     @GetMapping("getPendingApplicationByShelterID/{pageIndex}/{pageSize}/{shelterId}")
     public ResponseEntity<List<ApplicationDto>> getPendingApplicationByShelterID(@PathVariable int pageIndex, @PathVariable int pageSize, @PathVariable int shelterId) {
         List<ApplicationDto> applicationDtoList = masterControlServices.getPendingApplicationByShelterID(pageIndex, pageSize, shelterId);
@@ -62,11 +62,10 @@ public class MasterController {
         List<PetHeaderDto> petHeaderDtos = filterService.getFilteredPetsHeadersListByShelterId(shelterId, pageIndex, pageSize, filterDto.getFilters());
         return new ResponseEntity<>(petHeaderDtos, HttpStatus.OK);
     }
-//@RequestBody PetViewDto petViewDto
 
     @PostMapping("addPet")////check here
     public ResponseEntity<Void> addPet(@RequestBody PetViewDto petViewDto) {
-       masterControlServices.addPet(petViewDto);
+        masterControlServices.addPet(petViewDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
