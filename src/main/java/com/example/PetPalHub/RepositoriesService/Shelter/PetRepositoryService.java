@@ -2,7 +2,6 @@ package com.example.PetPalHub.RepositoriesService.Shelter;
 
 import com.example.PetPalHub.Dto.PetHeaderDto;
 import com.example.PetPalHub.Entities.Shelter.Pet;
-import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Exceptions.Shelter.PetAlreadyAddedException;
 import com.example.PetPalHub.Exceptions.Shelter.PetNotFoundException;
 import com.example.PetPalHub.Exceptions.Shelter.ShelterNotFoundException;

@@ -18,6 +18,8 @@ public class PetHeaderDto {
     private Gender gender;
     private HealthStatus healthStatus;
     private String ShelterName;
+    private String profilePicturePath;
+
     public PetHeaderDto(Pet pet){
         this.id = pet.getId();
         this.name = pet.getName();
@@ -25,5 +27,6 @@ public class PetHeaderDto {
         this.healthStatus = pet.getHealthStatus();
         this.species = pet.getSpecies();
         this.ShelterName = pet.getShelter().getName();
+        this.profilePicturePath = pet.getProfilePicturePath();
     }
 }

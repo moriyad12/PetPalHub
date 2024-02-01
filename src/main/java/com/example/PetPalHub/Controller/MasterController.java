@@ -88,7 +88,7 @@ public class MasterController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("updateShelterDto/{petId}")
+    @PostMapping("updatePetProfilePicture/{petId}")
     public ResponseEntity<Void> updatePetProfilePicture(@PathVariable int petId, @RequestBody ImageDto imageDto) {
         masterControlServices.updatePetProfilePicture(petId, imageDto.image);
         return new ResponseEntity<>(HttpStatus.OK);

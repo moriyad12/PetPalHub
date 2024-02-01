@@ -26,4 +26,5 @@ public class PetViewDto {
     private String imagePath;
     private int shelterId;
     private String shelterName;
+    private String profilePicturePath;
 }
