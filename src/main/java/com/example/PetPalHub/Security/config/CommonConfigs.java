@@ -10,16 +10,26 @@ public class CommonConfigs {
             "/master/updatePetProfilePicture/**",
             "/adopter/petForUser/**",
             "/user/updateUserProfilePicture/**",
-
     };
+  
     static final String[] AUTH_AUTHENTICATED = {
+            "/master/getShelterDto/**",
+            "/user/getUserDto/**",
+            "/user/updateUserProfile/**",
     };
     static final String[] AUTH_ADOPTER= {
             "/adopter/applyForPet/**",
             "/adopter/getApplications/**",
-
     };
     static final String[] AUTH_MASTER= {
-            "/master/**"
+            "/master/acceptApplication/**",
+            "/master/rejectApplication/**",
+            "/master/getPendingApplicationByShelterID/**",
+            "/master/getAcceptedApplicationByShelterID/**",
+            "/master/getRejectedApplicationByShelterID/**",
+            "/master/getFilteredPetsHeadersListByShelterId/**",
+            "/master/addPet/**",
+            "/master/editPet/**",
+            "/master/updateShelterDto/**",
     };
 }

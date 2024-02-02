@@ -16,4 +16,5 @@ public class ShelterViewDto {
     private String name;
     private String phoneNumber;
     private LocationDto shelterLocation;
+    private String description;
 }

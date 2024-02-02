@@ -39,7 +39,7 @@ class ShelterViewDtoTest {
     @Test
     public void testAllArgsConstructor() {
         LocationDto locationDto = LocationDto.builder().country("Country1").city("City1").address("Address1").build();
-        ShelterViewDto shelterViewDto = new ShelterViewDto(1, "Happy Paws Shelter", "123-456-7890", locationDto);
+        ShelterViewDto shelterViewDto = new ShelterViewDto(1, "Happy Paws Shelter", "123-456-7890", locationDto,"");
 
         assertEquals(1, shelterViewDto.getId());
         assertEquals("Happy Paws Shelter", shelterViewDto.getName());

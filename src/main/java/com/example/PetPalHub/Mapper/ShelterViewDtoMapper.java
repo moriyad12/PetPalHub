@@ -20,6 +20,7 @@ public class ShelterViewDtoMapper {
                 .name(shelter.getName())
                 .phoneNumber(shelter.getPhoneNumber())
                 .shelterLocation(new LocationDto(shelter.getShelterLocation()))
+                .description(shelter.getDescription())
                 .build();
     }
 
@@ -28,6 +29,7 @@ public class ShelterViewDtoMapper {
         shelter.setName(shelterViewDto.getName());
         shelter.setPhoneNumber(shelterViewDto.getPhoneNumber());
         shelter.setShelterLocation(getLocationFromLocationDto(shelterViewDto.getShelterLocation()));
+        shelter.setDescription(shelterViewDto.getDescription());
         return shelter;
     }
 
