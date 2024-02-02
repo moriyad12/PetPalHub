@@ -10,6 +10,7 @@ import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.User;
+import com.example.PetPalHub.Exceptions.Shelter.PetIsNotAvailableException;
 import com.example.PetPalHub.Exceptions.Shelter.PetNotFoundException;
 import com.example.PetPalHub.MailSender.EmailSenderService;
 import com.example.PetPalHub.Mapper.PetViewDtoMapper;
@@ -86,6 +87,8 @@ public class MasterControlServices {
     }
 
     public void editPet(PetViewDto petViewDto) {
+        if (petViewDto.getAvailability() == Availability.NOT_AVAILABLE)
+            throw new PetIsNotAvailableException();
         Pet pet = petViewDtoMapper.getPetWhenUpdate(petViewDto);
         petRepositoryService.updatePet(pet);
     }

@@ -28,7 +28,7 @@ public class AdopterService {
 
     public PetViewDto viewPet(int petId) {
         Pet pet = petRepositoryService.getPetById(petId);
-        checkIfPetAvailable(pet);
+//        checkIfPetAvailable(pet);
         return petViewDtoMapper.getDtoToView(pet);
     }
 
