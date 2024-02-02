@@ -10,11 +10,11 @@ public class CommonConfigs {
             "/master/updatePetProfilePicture/**",
             "/adopter/petForUser/**",
             "/user/updateUserProfilePicture/**",
+            "/master/getShelterDto/**",
+            "/user/getUserDto/**",
     };
   
     static final String[] AUTH_AUTHENTICATED = {
-            "/master/getShelterDto/**",
-            "/user/getUserDto/**",
             "/user/updateUserProfile/**",
     };
     static final String[] AUTH_ADOPTER= {
