@@ -7,11 +7,14 @@ public class CommonConfigs {
     static final String[] AUTH_WHITELIST = {
             "/proxy/**",
             "/adopter/dashboard/**",
+            "/master/updatePetProfilePicture/**",
             "/adopter/petForUser/**",
+            "/user/updateUserProfilePicture/**",
+    };
+  
+    static final String[] AUTH_AUTHENTICATED = {
             "/master/getShelterDto/**",
             "/user/getUserDto/**",
-    };
-    static final String[] AUTH_AUTHENTICATED = {
             "/user/updateUserProfile/**",
     };
     static final String[] AUTH_ADOPTER= {

@@ -86,4 +86,10 @@ public class MasterController {
         masterControlServices.updateShelter(shelterViewDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("updatePetProfilePicture/{petId}")
+    public ResponseEntity<Void> updatePetProfilePicture(@PathVariable int petId, @RequestBody ImageDto imageDto) {
+        masterControlServices.updatePetProfilePicture(petId, imageDto.image);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

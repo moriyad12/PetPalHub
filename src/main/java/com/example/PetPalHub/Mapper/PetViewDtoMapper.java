@@ -30,6 +30,7 @@ public class PetViewDtoMapper {
                 .imagePath(pet.getImagePath())
                 .shelterId(pet.getShelter().getId())
                 .shelterName(pet.getShelter().getName())
+                .profilePicturePath(pet.getProfilePicturePath())
                 .build();
     }
     public Pet getPetWhenCreate(PetViewDto petViewDto){

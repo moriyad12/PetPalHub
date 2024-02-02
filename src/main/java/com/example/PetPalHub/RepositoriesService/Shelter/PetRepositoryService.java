@@ -2,7 +2,6 @@ package com.example.PetPalHub.RepositoriesService.Shelter;
 
 import com.example.PetPalHub.Dto.PetHeaderDto;
 import com.example.PetPalHub.Entities.Shelter.Pet;
-import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Exceptions.Shelter.PetAlreadyAddedException;
 import com.example.PetPalHub.Exceptions.Shelter.PetNotFoundException;
 import com.example.PetPalHub.Exceptions.Shelter.ShelterNotFoundException;
@@ -64,4 +63,13 @@ public class PetRepositoryService {
         return petHeaderDtos;
     }
 
+    public void updatePetProfilePicture(int petId, String profilePictureURL) {
+        this.checkPetExistance(petId);
+        petRepository.updateProfileImagePictureById(petId, profilePictureURL);
+    }
+
+    public void checkPetExistance(int petId) {
+        if (!petRepository.existsById(petId))
+            throw new PetNotFoundException(petId);
+    }
 }

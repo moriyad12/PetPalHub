@@ -10,6 +10,7 @@ import com.example.PetPalHub.Entities.Relation.AdopterPetApplication;
 import com.example.PetPalHub.Entities.Shelter.Pet;
 import com.example.PetPalHub.Entities.Shelter.Shelter;
 import com.example.PetPalHub.Entities.users.User;
+import com.example.PetPalHub.Exceptions.Shelter.PetNotFoundException;
 import com.example.PetPalHub.MailSender.EmailSenderService;
 import com.example.PetPalHub.Mapper.PetViewDtoMapper;
 import com.example.PetPalHub.Mapper.ShelterViewDtoMapper;
@@ -63,6 +64,10 @@ public class MasterControlServices {
         applicationRepositoryService.updateApplicationStatus(adoptedId, petId, Status.REJECTED);
     }
 
+    public void updatePetProfilePicture(int petId, String profilePictureURL) {
+        petRepositoryService.updatePetProfilePicture(petId, profilePictureURL);
+    }
+
     public List<ApplicationDto> getPendingApplicationByShelterID(int pageIndex, int pageSize, int shelterId) {
         return dashboardRepositoryService.getApplicationByShelterIDAndStatusPage(pageIndex, pageSize, shelterId, Status.PENDING);
     }
@@ -93,5 +98,4 @@ public class MasterControlServices {
     public void updateShelter(ShelterViewDto shelterViewDto) {
         shelterRepositoryService.updateShelter(shelterViewDtoMapper.getShelterWhenUpdate(shelterViewDto));
     }
-
 }

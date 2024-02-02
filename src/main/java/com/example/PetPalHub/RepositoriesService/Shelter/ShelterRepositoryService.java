@@ -48,6 +48,4 @@ public class ShelterRepositoryService {
     public boolean existsById(int id) {
         return shelterRepository.existsById(id);
     }
-
-
 }

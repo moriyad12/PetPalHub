@@ -33,6 +33,7 @@ public class SecurityConfig {
                                 .hasRole("ADOPTER")
                                 .requestMatchers(CommonConfigs.AUTH_MASTER)
                                 .hasAnyRole("STAFF","MANAGER")
+                                .anyRequest().permitAll()
                 ).sessionManagement(
                         s -> s
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

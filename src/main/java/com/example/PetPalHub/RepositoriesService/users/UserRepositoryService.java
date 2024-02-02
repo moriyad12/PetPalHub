@@ -50,4 +50,13 @@ public class UserRepositoryService {
         userRepository.delete(user.get());
     }
 
+    public void updateProfileProfilePicture(int id, String pictureUrl) {
+        this.checkUserExists(id);
+        this.userRepository.updateProfileImagePictureById(id, pictureUrl);
+    }
+
+    private void checkUserExists(int id) {
+        if (!userRepository.existsById(id))
+            throw new UserNotFoundException();
+    }
 }
