@@ -30,6 +30,7 @@
     * Secure data backups and recovery mechanisms for peace of mind.
 
 ### UI Screenshots:
+![Login Page](https://github.com/moriyad12/PetPalHub/blob/main/pics/demo.mp4)
 
 **Login And Sign up Pages:**
 
